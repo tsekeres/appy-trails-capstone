@@ -17,5 +17,5 @@ This app is a great resource for outdoor enthusiasts that are ready to look over
 - Figma: 
 - Project Board: 
 - ERD: https://dbdiagram.io/d/60b6a45eb29a09603d178b27
-- 
+- Personal Bio Site: https://www.tadsekeres.com/
 ## Screenshots
