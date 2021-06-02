@@ -20,6 +20,8 @@ Users can find numerous resources on the resources page to use in planning.
 ## Features
 Admin can CRUD on any Trip Plan
 
+Admin can CRUD on resource cards.
+
 Trip creation form leads user through trip planning with options and resources
 
 Resource page has multiple links and site connections for trip planning information
