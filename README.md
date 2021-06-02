@@ -6,10 +6,15 @@ This is an application that is designed to help backpackers and hikers to plan a
 
 ## Description of User 
 This app is a great resource for outdoor enthusiasts that are ready to look over established hiking or backpacking trips or plan their own.
+
 Users can look at all created trips for ideas or planning.
+
 Users can create a new trip plan.
+
 Users can update a trip plan they created.
+
 Users can delete a trip plan they created.
+
 Users can find numerous resources on the resources page to use in planning.
 
 ## Stretch
