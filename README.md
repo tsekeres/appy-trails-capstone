@@ -33,7 +33,7 @@ Users can search through or filter trip plans by category (difficulty, distance,
 
 ## Helpful Links
 - Figma: https://www.figma.com/file/P8OlqG8D44QmOBT97xG8gc/Untitled?node-id=0%3A1
-- Project Board: 
+- Project Board: https://github.com/tsekeres/appy-trails-capstone/projects/1
 - ERD: https://dbdiagram.io/d/60b6a45eb29a09603d178b27
 - Personal Bio Site: https://www.tadsekeres.com/
 - Intro Loom vid: https://www.loom.com/share/8ee04a623f744e98b0cb4f403108a65a
