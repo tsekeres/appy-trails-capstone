@@ -17,6 +17,13 @@ Users can delete a trip plan they created.
 
 Users can find numerous resources on the resources page to use in planning.
 
+## Features
+Admin can CRUD on any Trip Plan
+
+Trip creation form leads user through trip planning with options and resources
+
+Resource page has multiple links and site connections for trip planning information
+
 ## Stretch
 Users can search through or filter trip plans by category (difficulty, distance, camping or fees).
 
