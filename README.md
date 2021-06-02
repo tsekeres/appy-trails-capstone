@@ -36,5 +36,6 @@ Users can search through or filter trip plans by category (difficulty, distance,
 - Project Board: 
 - ERD: https://dbdiagram.io/d/60b6a45eb29a09603d178b27
 - Personal Bio Site: https://www.tadsekeres.com/
+- Intro Loom vid: https://www.loom.com/share/8ee04a623f744e98b0cb4f403108a65a
 
 ## Screenshots
