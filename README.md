@@ -18,7 +18,7 @@ Users can search through or filter trip plans by category (difficulty, distance,
 ## Loom 
 
 ## Helpful Links
-- Figma: 
+- Figma: https://www.figma.com/file/P8OlqG8D44QmOBT97xG8gc/Untitled?node-id=0%3A1
 - Project Board: 
 - ERD: https://dbdiagram.io/d/60b6a45eb29a09603d178b27
 - Personal Bio Site: https://www.tadsekeres.com/
