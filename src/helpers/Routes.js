@@ -21,13 +21,13 @@ function Routes({ user }) {
   return (
     <div>
       <Switch>
-        <Route exact path="/" user={user} component={Home} />
-        <PrivateRoute
+        <Route exact path="/" component={Home} />
+        <Route
           exact
-          path="/"
+          path="/trips"
           user={user}
           component={() => (
-            <ViewName user={user} />
+            <Trips user={user} />
           )}
         />
         <PrivateRoute
