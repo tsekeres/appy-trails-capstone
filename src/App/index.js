@@ -25,7 +25,7 @@ function App() {
           fullName: authed.displayName,
           profileImage: authed.photoURL,
           uid: authed.uid,
-          user: authed.email.split("@")[0],
+          user: authed.email.split('@')[0],
         };
         setUser(userInfoObj);
         setAdmin(false);
@@ -39,8 +39,8 @@ function App() {
   return (
     <div className='App'>
       <Router>
-        <NavBar user={user} />
-        <Routes user={user} />
+        <NavBar admin={admin} user={user} />
+        <Routes admin={admin} user={user} />
       </Router>
     </div>
   );

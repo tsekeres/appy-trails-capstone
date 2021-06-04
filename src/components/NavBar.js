@@ -31,36 +31,33 @@ const NavBar = ({ user, admin }) => {
   return (
     <div>
       <Navbar fixed="top" color="light" light expand="md">
-        <NavbarBrand href="/home"><img id="navLogo" src={hikinglogo}></img></NavbarBrand>
+        <NavbarBrand href="/home">
+          <img id="navLogo" src={hikinglogo}></img>
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <NavItem>
-            <Link className="nav-link" to="/trips">
-              Trips
-            </Link>
-          </NavItem>
-          <NavItem>
-            <Link className="nav-link" to="/resources">
-              Resources
-            </Link>
-          </NavItem>
           <Nav className="mr-auto" navbar>
-            {user && authenticated()}
-            {user !== null && (
-              <NavItem>
-                {user ? (
-                  <Button color="danger" onClick={signOutUser}>
-                    Sign Out
-                  </Button>
-                ) : (
-                  <Button color="info" onClick={signInUser}>
-                    Sign In
-                  </Button>
-                )}
-              </NavItem>
-            )}
+            <NavItem>
+              <Link className="nav-link" to="/trips">
+                Trips
+              </Link>
+            </NavItem>
+            <NavItem>{(user || admin) && authenticated()}</NavItem>
+            <NavItem>
+              <Link className="nav-link" to="/resources">
+                Resources
+              </Link>
+            </NavItem>
           </Nav>
         </Collapse>
+        { (user || admin) !== null
+        && <NavItem>
+            { (user || admin)
+              ? <Button color="danger" onClick={signOutUser}>Sign Out</Button>
+              : <Button color="info" onClick={signInUser}>Sign In</Button>
+            }
+          </NavItem>
+        }
       </Navbar>
     </div>
   );
@@ -68,6 +65,7 @@ const NavBar = ({ user, admin }) => {
 
 NavBar.propTypes = {
   user: PropTypes.any,
+  admin: PropTypes.any
 };
 
 export default NavBar;

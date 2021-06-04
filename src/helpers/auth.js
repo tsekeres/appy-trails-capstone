@@ -5,9 +5,8 @@ const signInUser = () => {
   firebase.auth().signInWithPopup(provider);
 };
 
-const signOutUser = () =>
-  new Promise((resolve, reject) => {
-    firebase.auth().signOut().then(resolve).catch(reject);
-  });
+const signOutUser = () => new Promise((resolve, reject) => {
+  firebase.auth().signOut().then(resolve).catch(reject);
+});
 
 export { signInUser, signOutUser };
