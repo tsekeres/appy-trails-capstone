@@ -1,9 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import TripCards from '../components/TripCards';
 
-export default function Trips() {
+function Trips({ trips, setTrips }) {
   return (
-    <div>
-      <h2>YO</h2>
-    </div>
+    <>
+      <div className='card-container trips-view'>
+        {trips?.map((tripInfo) => (
+          <TripCards
+            key={tripInfo.firebaseKey}
+            trip={tripInfo}
+            setTrips={setTrips}
+          />
+        ))}
+      </div>
+    </>
   );
 }
+
+Trips.propTypes = {
+  trips: PropTypes.array,
+  setTrips: PropTypes.func,
+};
+
+export default Trips;

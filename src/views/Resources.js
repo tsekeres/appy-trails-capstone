@@ -1,9 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import ResourceCards from '../components/ResourceCards';
 
-export default function Resources() {
+function Resources({ resources, setResources }) {
   return (
-    <div>
-      <h2>YO</h2>
-    </div>
+    <>
+      <div className='card-container resources-view'>
+        {resources?.map((resourceInfo) => (
+          <ResourceCards
+            key={resourceInfo.firebaseKey}
+            resource={resourceInfo}
+            setResources={setResources}
+          />
+        ))}
+      </div>
+    </>
   );
 }
+
+Resources.propTypes = {
+  resources: PropTypes.array,
+  setResources: PropTypes.func,
+};
+
+export default Resources;

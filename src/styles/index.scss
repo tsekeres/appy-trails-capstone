@@ -1,5 +1,5 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import 'variables';
+@import "variables";
 
 body {
   background-color: $favColor;
@@ -10,6 +10,36 @@ body {
   height: 40px;
 }
 
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 60px;
+  justify-content: center;
+
+  .card {
+    width: 350px;
+    height: auto;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-body {
+    flex: none;
+  }
+}
+
 li {
   list-style: none;
+}
+
+.user-welcome {
+  margin-top: 100px;
+  color: black;
+}
+
+.planner {
+  margin-top: 100px;
+  color: black;
 }

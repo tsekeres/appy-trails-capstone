@@ -2,10 +2,19 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 import Routes from '../helpers/Routes';
 import NavBar from '../components/NavBar';
+import getTrips from '../helpers/data/TripsData';
+import getResources from '../helpers/data/ResourcesData';
 
 function App() {
   const [admin, setAdmin] = useState(null);
   const [user, setUser] = useState(null);
+  const [trips, setTrips] = useState([]);
+  const [resources, setResources] = useState([]);
+
+  useEffect(() => {
+    getTrips().then(setTrips);
+    getResources().then(setResources);
+  }, []);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -37,7 +46,14 @@ function App() {
   return (
     <>
       <NavBar admin={admin} user={user} />
-      <Routes admin={admin} user={user} />
+      <Routes
+      admin={admin}
+      user={user}
+      trips={trips}
+      setTrips={setTrips}
+      resources={resources}
+      setResources={setResources}
+      />
     </>
   );
 }
