@@ -22,7 +22,7 @@ PrivateRoute.propTypes = {
 };
 
 function Routes({
-  user, admin
+  user, admin, trips, setTrips, resources, setResources
 }) {
   return (
     <div>
@@ -38,6 +38,8 @@ function Routes({
             <Trips
               user={user}
               admin={admin}
+              trips={trips}
+              setTrips={setTrips}
             />
           )}
         />
@@ -62,6 +64,8 @@ function Routes({
             <Resources
               user={user}
               admin={admin}
+              resources={resources}
+              setResources={setResources}
             />
           )}
         />
@@ -74,6 +78,10 @@ function Routes({
 Routes.propTypes = {
   user: PropTypes.any,
   admin: PropTypes.any,
+  trips: PropTypes.array,
+  setTrips: PropTypes.func,
+  resources: PropTypes.array,
+  setResources: PropTypes.func,
 };
 
 export default Routes;
