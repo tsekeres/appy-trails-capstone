@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 import Routes from '../helpers/Routes';
 import NavBar from '../components/NavBar';
-import getTrips from '../helpers/data/TripsData';
+import { getTrips } from '../helpers/data/TripsData';
 import getResources from '../helpers/data/ResourcesData';
 
 function App() {
