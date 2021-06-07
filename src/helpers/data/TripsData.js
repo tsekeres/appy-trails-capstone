@@ -1,0 +1,43 @@
+import axios from 'axios';
+import firebaseConfig from '../apiKeys';
+
+const dbURL = firebaseConfig.databaseURL;
+
+const getTrips = () => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbURL}/tripPlan.json`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
+const addTrip = (obj) => new Promise((resolve, reject) => {
+  axios
+    .post(`${dbURL}/tripPlan.json`, obj)
+    .then((response) => {
+      const tripplan = { firebaseKey: response.data.name };
+      axios
+        .patch(`${dbURL}/tripPlan/${response.data.name}.json`, tripplan)
+        .then(() => {
+          getTrips().then((tripsArray) => resolve(tripsArray));
+        });
+    })
+    .catch((error) => reject(error));
+});
+
+const updateTrip = (trip) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${dbURL}/tripPlan/${trip.firebaseKey}.json`, trip)
+    .then(() => getTrips().then(resolve))
+    .catch((error) => reject(error));
+});
+
+const deleteTrip = (firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbURL}/tripPlan/${firebaseKey}.json`)
+    .then(() => getTrips().then((TripsArray) => resolve(TripsArray)))
+    .catch((error) => reject(error));
+});
+
+export {
+  getTrips, addTrip, updateTrip, deleteTrip
+};

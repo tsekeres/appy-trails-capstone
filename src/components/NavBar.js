@@ -11,7 +11,7 @@ import {
   Button,
 } from 'reactstrap';
 import { signInUser, signOutUser } from '../helpers/auth';
-import hikinglogo from '../assets/hikinglogo.png';
+import hikinglogo2 from '../assets/hikinglogo2.jpg';
 
 const NavBar = ({ user, admin }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,20 +19,16 @@ const NavBar = ({ user, admin }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const authenticated = () => (
-    <>
-      <NavItem>
-        <Link className='nav-link' to='/trip-planner'>
-          Trip Planner
-        </Link>
-      </NavItem>
-    </>
+    <Link className='nav-link' to='/trip-planner'>
+      Trip Planner
+    </Link>
   );
 
   return (
     <div>
       <Navbar fixed="top" color="light" light expand="md">
         <NavbarBrand href="/home">
-          <img id="navLogo" src={hikinglogo}></img>
+          <img className="navLogo" src={hikinglogo2}></img>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -50,14 +46,19 @@ const NavBar = ({ user, admin }) => {
             </NavItem>
           </Nav>
         </Collapse>
-        { (user || admin) !== null
-        && <NavItem>
-            { (user || admin)
-              ? <Button color="danger" onClick={signOutUser}>Sign Out</Button>
-              : <Button color="info" onClick={signInUser}>Sign In</Button>
-            }
+        {(user || admin) !== null && (
+          <NavItem>
+            {user || admin ? (
+              <Button color="danger" onClick={signOutUser}>
+                Sign Out
+              </Button>
+            ) : (
+              <Button color="info" onClick={signInUser}>
+                Sign In
+              </Button>
+            )}
           </NavItem>
-        }
+        )}
       </Navbar>
     </div>
   );

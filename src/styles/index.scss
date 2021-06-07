@@ -1,6 +1,60 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import 'variables';
+@import "variables";
 
 body {
   background-color: $favColor;
+}
+
+.navLogo {
+  border-radius: 50%;
+  height: 40px;
+}
+
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 60px;
+  justify-content: center;
+
+  .card {
+    width: 350px;
+    height: auto;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-body {
+    flex: none;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+.user-welcome {
+  margin-top: 100px;
+  color: black;
+}
+
+.planner {
+  margin-top: 100px;
+  color: black;
+}
+
+.jumbotron {
+  background-color: $favColor;
+  // background: url('../assets/hikinglogo2.jpg') no-repeat center center;
+}
+
+.memoji {
+  border-radius: 50%;
+  height: 300px;
+  margin-top: 100px;
+}
+
+.form-container {
+  margin-top: 100px;
 }
