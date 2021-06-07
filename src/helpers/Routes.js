@@ -52,6 +52,8 @@ function Routes({
             <TripPlanner
               user={user}
               admin={admin}
+              trips={trips}
+              setTrips={setTrips}
             />
           )}
         />

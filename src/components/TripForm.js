@@ -1,34 +1,47 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import {
+  Button, Form, FormGroup, Label, Input
+} from 'reactstrap';
 import PropTypes from 'prop-types';
+import { addTrip, updateTrip } from '../helpers/data/TripsData';
 
 const TripForm = ({
   formTitle,
-  setProjects,
-  title,
-  screenshot,
-  netlifyLink,
-  githubLink,
-  loomLink,
-  description,
-  techUsed,
+  setTrips,
+  camping,
+  difficulty,
+  distance,
+  equipmentList,
+  fees,
+  image,
+  nearestHospital,
+  parkName,
+  parkWebLink,
+  reservations,
+  trailName,
+  userId,
   firebaseKey,
 }) => {
-  const [project, setProject] = useState({
-    title: title || '',
-    screenshot: screenshot || '',
-    netlifyLink: netlifyLink || '',
-    githubLink: githubLink || '',
-    loomLink: loomLink || '',
-    description: description || '',
-    techUsed: techUsed || '',
+  const [trip, setTrip] = useState({
+    camping: camping || '',
+    distance: distance || '',
+    difficulty: difficulty || '',
+    equipmentList: equipmentList || '',
+    fees: fees || '',
+    image: image || '',
+    nearestHospital: nearestHospital || '',
+    parkName: parkName || '',
+    parkWebLink: parkWebLink || '',
+    reservations: reservations || '',
+    trailName: trailName || '',
+    userId: userId || '',
     firebaseKey: firebaseKey || '',
   });
   const history = useHistory();
 
   const handleInputChange = (e) => {
-    setProject((prevState) => ({
+    setTrip((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
@@ -36,124 +49,199 @@ const TripForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (project.firebaseKey) {
-      updateProject(project).then(setProjects);
+    if (trip.firebaseKey) {
+      updateTrip(trip).then(setTrips);
     } else {
-      addProject(project).then(setProjects);
-      history.push('/projects');
+      addTrip(trip).then(setTrips);
+      history.push('/trips');
 
-      setProject({
-        title: '',
-        screenshot: '',
-        netlifyLink: '',
-        githubLink: '',
-        loomLink: '',
-        description: '',
-        techUsed: '',
+      setTrip({
+        camping: '',
+        distance: '',
+        difficulty: '',
+        equipmentList: '',
+        fees: '',
+        image: '',
+        nearestHospital: '',
+        parkName: '',
+        parkWebLink: '',
+        reservations: '',
+        trailName: '',
+        userId: '',
         firebaseKey: null,
       });
     }
   };
 
   return (
-    <div className='project-form'>
-      <Form id='addProjectForm' autoComplete='off' onSubmit={handleSubmit}>
+    <div className="trip-form">
+      <Form id="addtripForm" autoComplete="off" onSubmit={handleSubmit}>
         <h2>{formTitle}</h2>
         <FormGroup>
-          <Label for='title'>Title:</Label>
+          <Label for="trailName">Trail Name:</Label>
           <Input
-            name='title'
-            id='title'
-            value={project.title}
-            type='text'
-            placeholder='Enter a Title'
+            name="trailName"
+            id="trailName"
+            value={trip.trialName}
+            type="text"
+            placeholder="Enter a Trail Name"
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for='screenshot'>Screenshot: </Label>
+          <Label for="parkName">Park Name: </Label>
           <Input
-            name='screenshot'
-            id='screenshot'
-            value={project.screenshot}
-            type='img'
-            placeholder='Enter a Screenshot'
+            name="parkName"
+            id="parkName"
+            value={trip.parkName}
+            type="text"
+            placeholder="Enter a Park Name"
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for='netlifyLink'>Netlify Link: </Label>
+          <Label for="image">Image from Trail: </Label>
           <Input
-            name='netlifyLink'
-            id='netlifyLink'
-            value={project.netlifyLink}
-            type='url'
-            placeholder='Enter a Link'
+            name="image"
+            id="iamge"
+            value={trip.image}
+            type="url"
+            placeholder="Enter an Image of the Trail"
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for='githubLink'>GitHub Link: </Label>
+          <Label for="distance">Trail Distance: </Label>
           <Input
-            name='githubLink'
-            id='githubLink'
-            value={project.githubLink}
-            type='url'
-            placeholder='Enter a Link'
+            name="distance"
+            id="distance"
+            value={trip.distance}
+            type="text"
+            placeholder="Enter a Distance for the Trail"
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for='loomLink'>Video Link: </Label>
+          <Label for="difficulty">Trail Difficulty: </Label>
           <Input
-            name='loomLink'
-            id='loomLink'
-            value={project.loomLink}
-            type='url'
-            placeholder='Enter a Link'
+            type="select"
+            name="difficulty"
+            id="difficulty"
+            value={trip.difficulty}
+            placeholder="Enter a Trail Difficulty"
+            onChange={handleInputChange}
+          >
+            <option>Easy</option>
+            <option>Moderate</option>
+            <option>Moderately Strenuous</option>
+            <option>Strenuous</option>
+            <option>Very Strenuous</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="fees">Fees Required: </Label>
+          <Input
+            type="select"
+            name="fees"
+            id="fees"
+            value={trip.fees}
+            placeholder="Enter if Fees are Required"
+            onChange={handleInputChange}
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="camping">Camping Available: </Label>
+          <Input
+            type="select"
+            name="camping"
+            id="camping"
+            value={trip.camping}
+            placeholder="Enter if Camping as Available"
+            onChange={handleInputChange}
+          >
+            <option>No</option>
+            <option>Campground Only</option>
+            <option>Campground and Backcountry Camping</option>
+            <option>Backcountry Camping Only</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="reservations">Reservations Required: </Label>
+          <Input
+            type="select"
+            name="reservations"
+            id="reservations"
+            value={trip.reservations}
+            placeholder="Enter if Reservations are Required"
+            onChange={handleInputChange}
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="equipmentList">Equipment List: </Label>
+          <Input
+            name="equipmentList"
+            id="equipmentList"
+            value={trip.equipmentList}
+            type="select"
+            placeholder="Pick an Equipment list"
+            onChange={handleInputChange}
+          >
+            <option>Summer list</option>
+            <option>Winter list</option>
+            <option>Shoulder Season list</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="nearestHospital">Nearest Hospital: </Label>
+          <Input
+            name="nearestHospital"
+            id="nearestHospital"
+            value={trip.nearestHospital}
+            type="text"
+            placeholder="Enter the Nearest Hospital"
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for='description'>Description: </Label>
+          <Label for="parkWebLink">Park Link: </Label>
           <Input
-            name='description'
-            id='description'
-            value={project.description}
-            type='text'
-            placeholder='Enter a Description'
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for='techUsed'>Tech Used: </Label>
-          <Input
-            name='techUsed'
-            id='techUsed'
-            value={project.techUsed}
-            type='text'
-            placeholder='Enter a List of Tech Used'
+            name="parkWebLink"
+            id="parkWebLink"
+            value={trip.parkWebLink}
+            type="url"
+            placeholder="Enter the Park URL"
             onChange={handleInputChange}
           />
         </FormGroup>
 
-        <Button type='submit'>Submit</Button>
+        <Button type="submit">Submit</Button>
       </Form>
     </div>
   );
 };
 
-ProjectForm.propTypes = {
+TripForm.propTypes = {
   formTitle: PropTypes.string.isRequired,
-  setProjects: PropTypes.func,
-  title: PropTypes.string,
-  screenshot: PropTypes.string,
-  netlifyLink: PropTypes.string,
-  githubLink: PropTypes.string,
-  loomLink: PropTypes.string,
-  description: PropTypes.string,
-  techUsed: PropTypes.string,
+  setTrips: PropTypes.func,
+  camping: PropTypes.string,
+  distance: PropTypes.string,
+  difficulty: PropTypes.string,
+  equipmentList: PropTypes.string,
+  fees: PropTypes.string,
+  image: PropTypes.string,
+  nearestHospital: PropTypes.string,
+  parkName: PropTypes.string,
+  parkWebLink: PropTypes.string,
+  reservations: PropTypes.string,
+  trailName: PropTypes.string,
+  userId: PropTypes.string,
   firebaseKey: PropTypes.string,
 };
 
-export default ProjectForm;
+export default TripForm;
