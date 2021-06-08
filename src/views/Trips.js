@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from 'reactstrap';
 import TripCards from '../components/TripCards';
 import { getTrips } from '../helpers/data/TripsData';
 
@@ -11,7 +10,7 @@ function Trips() {
   }, []);
 
   return (
-    <Container>
+    <>
       <div className='card-container trips-view'>
         {trips?.map((tripInfo) => (
           <TripCards
@@ -21,7 +20,7 @@ function Trips() {
           />
         ))}
       </div>
-    </Container>
+    </>
   );
 }
 

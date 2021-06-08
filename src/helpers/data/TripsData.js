@@ -10,6 +10,13 @@ const getTrips = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getUserTrips = (userId) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbURL}/tripPlan.json?orderBy="userId"&equalTo="${userId}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 const addTrip = (obj) => new Promise((resolve, reject) => {
   axios
     .post(`${dbURL}/tripPlan.json`, obj)
@@ -39,5 +46,9 @@ const deleteTrip = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  getTrips, addTrip, updateTrip, deleteTrip
+  getTrips,
+  getUserTrips,
+  addTrip,
+  updateTrip,
+  deleteTrip
 };
