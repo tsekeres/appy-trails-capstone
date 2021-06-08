@@ -28,6 +28,10 @@ body {
   .card-body {
     flex: none;
   }
+
+  h2 {
+    text-align: center;
+  }
 }
 
 li {
@@ -56,5 +60,10 @@ li {
 }
 
 .form-container {
-  margin-top: 100px;
+  padding: 100px;
+  width: 40%;
+
+  h2 {
+    text-align: center;
+  }
 }
