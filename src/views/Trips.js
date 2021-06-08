@@ -1,10 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { Container } from 'reactstrap';
 import TripCards from '../components/TripCards';
+import { getTrips } from '../helpers/data/TripsData';
 
-function Trips({ trips, setTrips }) {
+function Trips() {
+  const [trips, setTrips] = useState([]);
+
+  useEffect(() => {
+    getTrips().then(setTrips);
+  }, []);
+
   return (
-    <>
+    <Container>
       <div className='card-container trips-view'>
         {trips?.map((tripInfo) => (
           <TripCards
@@ -14,13 +21,8 @@ function Trips({ trips, setTrips }) {
           />
         ))}
       </div>
-    </>
+    </Container>
   );
 }
-
-Trips.propTypes = {
-  trips: PropTypes.array,
-  setTrips: PropTypes.func,
-};
 
 export default Trips;

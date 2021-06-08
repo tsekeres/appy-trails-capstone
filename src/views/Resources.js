@@ -1,8 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import ResourceCards from '../components/ResourceCards';
+import getResources from '../helpers/data/ResourcesData';
 
-function Resources({ resources, setResources }) {
+function Resources() {
+  const [resources, setResources] = useState([]);
+
+  useEffect(() => {
+    getResources().then(setResources);
+  }, []);
+
   return (
     <>
       <div className='card-container resources-view'>
@@ -17,10 +23,5 @@ function Resources({ resources, setResources }) {
     </>
   );
 }
-
-Resources.propTypes = {
-  resources: PropTypes.array,
-  setResources: PropTypes.func,
-};
 
 export default Resources;
