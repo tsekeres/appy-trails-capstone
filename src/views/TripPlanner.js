@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 import TripForm from '../components/TripForm';
 import UpdateTripCards from '../components/UpdateTripCards';
-import { getTrips } from '../helpers/data/TripsData';
+import { getTrips, getUserTrips } from '../helpers/data/TripsData';
 
 function TripPlanner({ user, admin }) {
   const [trips, setTrips] = useState([]);
+  const [userTrips, setUserTrips] = useState([]);
 
   useEffect(() => {
     getTrips().then(setTrips);
+    getUserTrips(user.userId).then(setUserTrips);
   }, []);
 
   return (
@@ -22,13 +24,30 @@ function TripPlanner({ user, admin }) {
           <h2>Your Trips</h2>
         </div>
         <hr></hr>
-        {trips?.map((tripInfo) => (
-          <UpdateTripCards
-            key={tripInfo.firebaseKey}
-            trip={tripInfo}
-            setTrips={setTrips}
-          />
-        ))}
+        { admin !== null
+          && <div>
+            { admin
+              ? <div>
+                  {trips?.map((tripInfo) => (
+                    <UpdateTripCards
+                      key={tripInfo.firebaseKey}
+                      trip={tripInfo}
+                      setTrips={setTrips}
+                    />
+                  ))}
+                </div>
+              : <div>
+                  {userTrips?.map((tripInfo) => (
+                    <UpdateTripCards
+                      key={tripInfo.firebaseKey}
+                      trip={tripInfo}
+                      setTrips={setTrips}
+                    />
+                  ))}
+                </div>
+            }
+          </div>
+        }
       </div>
     </Container>
   );
