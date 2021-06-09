@@ -10,7 +10,6 @@ const TripForm = ({
   user,
   admin,
   formTitle,
-  setTrips,
   camping,
   difficulty,
   distance,
@@ -51,10 +50,13 @@ const TripForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (trip.firebaseKey) {
-      updateTrip(trip).then(setTrips);
+      updateTrip(trip).then(() => {
+        history.push('/trips');
+      });
     } else {
-      addTrip(trip).then(setTrips);
-      history.push('/trips');
+      addTrip(trip).then(() => {
+        history.push('/trips');
+      });
 
       setTrip({
         camping: '',
@@ -229,7 +231,6 @@ TripForm.propTypes = {
   admin: PropTypes.any,
   user: PropTypes.any,
   formTitle: PropTypes.string.isRequired,
-  setTrips: PropTypes.func,
   camping: PropTypes.string,
   distance: PropTypes.string,
   difficulty: PropTypes.string,

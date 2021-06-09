@@ -31,6 +31,7 @@ function TripPlanner({ user, admin }) {
                   {trips?.map((tripInfo) => (
                     <UpdateTripCards
                       key={tripInfo.firebaseKey}
+                      admin={admin}
                       trip={tripInfo}
                       setTrips={setTrips}
                     />
@@ -40,6 +41,7 @@ function TripPlanner({ user, admin }) {
                   {userTrips?.map((tripInfo) => (
                     <UpdateTripCards
                       key={tripInfo.firebaseKey}
+                      user={user}
                       trip={tripInfo}
                       setTrips={setTrips}
                     />
