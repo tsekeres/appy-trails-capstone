@@ -35,7 +35,7 @@ const TripForm = ({
     parkWebLink: parkWebLink || '',
     reservations: reservations || '',
     trailName: trailName || '',
-    userId: admin.userId || user.userId,
+    userId: user.userId || admin.userId,
     firebaseKey: firebaseKey || null,
   });
   const history = useHistory();
