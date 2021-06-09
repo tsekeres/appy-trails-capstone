@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -12,13 +13,19 @@ import {
 import { deleteTrip } from '../helpers/data/TripsData';
 import TripForm from './TripForm';
 
-const UpdateTripCards = ({ trip, setTrips }) => {
+const UpdateTripCards = ({
+  user, setUser, admin, setAdmin, trip, setTrips
+}) => {
   const [updating, setUpdating] = useState(false);
+
+  const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteTrip(trip.firebaseKey).then(setTrips);
+        deleteTrip(trip.firebaseKey).then(() => {
+          history.push('/trips');
+        });
         break;
       case 'update':
         setUpdating((prevState) => !prevState);
@@ -53,6 +60,10 @@ const UpdateTripCards = ({ trip, setTrips }) => {
           {updating && (
             <TripForm
               formTitle='Update Trip'
+              user={user}
+              setUser={setUser}
+              admin={admin}
+              setAdmin={setAdmin}
               setTrips={setTrips}
               firebaseKey={trip.firebaseKey}
               camping={trip.camping}
@@ -74,6 +85,10 @@ const UpdateTripCards = ({ trip, setTrips }) => {
 };
 
 UpdateTripCards.propTypes = {
+  user: PropTypes.any,
+  setUser: PropTypes.func,
+  admin: PropTypes.any,
+  setAdmin: PropTypes.func,
   trip: PropTypes.object,
   setTrips: PropTypes.func,
 };
