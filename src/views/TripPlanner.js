@@ -15,41 +15,48 @@ function TripPlanner({ user, admin }) {
   }, []);
 
   return (
-    <Container>
+    <Container className="planner-container d-flex flex-row">
       <div className="form-container">
-        <TripForm formTitle="Plan a Trip" user={user} admin={admin} setTrips={setTrips} />
+        <TripForm
+          className="planner-form"
+          formTitle="Plan a Trip"
+          user={user}
+          admin={admin}
+          setTrips={setTrips}
+        />
       </div>
-      <div className="card-container">
+      <div>
         <div>
           <h2>Your Trips</h2>
         </div>
-        <hr></hr>
-        { admin !== null
-          && <div>
-            { admin
-              ? <div>
-                  {trips?.map((tripInfo) => (
-                    <UpdateTripCards
-                      key={tripInfo.firebaseKey}
-                      admin={admin}
-                      trip={tripInfo}
-                      setTrips={setTrips}
-                    />
-                  ))}
-                </div>
-              : <div>
-                  {userTrips?.map((tripInfo) => (
-                    <UpdateTripCards
-                      key={tripInfo.firebaseKey}
-                      user={user}
-                      trip={tripInfo}
-                      setTrips={setTrips}
-                    />
-                  ))}
-                </div>
-            }
+        {admin !== null && (
+          <div>
+            {admin ? (
+              <div className="card-container-a">
+                {trips?.map((tripInfo) => (
+                  <UpdateTripCards
+                    key={tripInfo.firebaseKey}
+                    user={user}
+                    admin={admin}
+                    trip={tripInfo}
+                    setTrips={setTrips}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="card-container-a">
+                {userTrips?.map((tripInfo) => (
+                  <UpdateTripCards
+                    key={tripInfo.firebaseKey}
+                    user={user}
+                    trip={tripInfo}
+                    setTrips={setTrips}
+                  />
+                ))}
+              </div>
+            )}
           </div>
-        }
+        )}
       </div>
     </Container>
   );

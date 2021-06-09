@@ -36,51 +36,78 @@ const UpdateTripCards = ({
   };
 
   return (
-      <Card>
-        <CardImg top width='100%' src={trip.image} alt='Card image cap' />
-        <CardBody>
-          <CardTitle tag='h2'>{trip.trailName}</CardTitle>
-          <CardText>{trip.parkName}</CardText>
-          <hr></hr>
-          <CardText>{trip.distance}</CardText>
-          <CardText>{trip.difficulty}</CardText>
-          <CardText>{trip.fees}</CardText>
-          <CardText>{trip.camping}</CardText>
-          <CardText>{trip.reservations}</CardText>
-          <CardText>{trip.nearestHospital}</CardText>
-          <hr></hr>
-          <CardText>{trip.equipmentList}</CardText>
-          <CardLink href={trip.parkWebLink}>Visit Park Website</CardLink>
-          <Button color='danger' onClick={() => handleClick('delete')}>
-            Delete Trip
-          </Button>
-          <Button color='info' onClick={() => handleClick('update')}>
-            {updating ? 'Close Form' : 'Update Trip'}
-          </Button>
-          {updating && (
-            <TripForm
-              formTitle='Update Trip'
-              user={user}
-              setUser={setUser}
-              admin={admin}
-              setAdmin={setAdmin}
-              setTrips={setTrips}
-              firebaseKey={trip.firebaseKey}
-              camping={trip.camping}
-              difficulty={trip.difficulty}
-              distance={trip.distance}
-              equipmentList={trip.equipmentList}
-              fees={trip.fees}
-              image={trip.image}
-              nearestHospital={trip.nearestHospital}
-              parkName={trip.parkName}
-              parkWebLink={trip.parkWebLink}
-              reservations={trip.reservations}
-              trailName={trip.trailName}
-            />
-          )}
-        </CardBody>
-      </Card>
+    <Card>
+      <CardImg top width='100%' src={trip.image} alt='Card image cap' />
+      <CardBody>
+        <CardTitle tag='h2'>
+          Trail Name:<br></br>
+          {trip.trailName}
+        </CardTitle>
+        <CardText>
+          Park Name:<br></br>
+          {trip.parkName}
+        </CardText>
+        <hr></hr>
+        <CardText>
+          Trail Distance:<br></br>
+          {trip.distance}
+        </CardText>
+        <CardText>
+          Trail Difficulty:<br></br>
+          {trip.difficulty}
+        </CardText>
+        <CardText>
+          Fees Required:<br></br>
+          {trip.fees}
+        </CardText>
+        <CardText>
+          Camping Available:<br></br>
+          {trip.camping}
+        </CardText>
+        <CardText>
+          Reservations Required:<br></br>
+          {trip.reservations}
+        </CardText>
+        <CardText>
+          Nearest Hospital:<br></br>
+          {trip.nearestHospital}
+        </CardText>
+        <hr></hr>
+        <CardText>
+          Equipment List:<br></br>
+          {trip.equipmentList}
+        </CardText>
+        <CardLink href={trip.parkWebLink}>Visit Park Website</CardLink>
+        <Button color='danger' size='sm' onClick={() => handleClick('delete')}>
+          Delete Trip
+        </Button>
+        <Button color='info' size='sm' onClick={() => handleClick('update')}>
+          {updating ? 'Close Form' : 'Update Trip'}
+        </Button>
+        {updating && (
+          <TripForm
+            formTitle='Update Trip'
+            user={user}
+            setUser={setUser}
+            admin={admin}
+            setAdmin={setAdmin}
+            setTrips={setTrips}
+            firebaseKey={trip.firebaseKey}
+            camping={trip.camping}
+            difficulty={trip.difficulty}
+            distance={trip.distance}
+            equipmentList={trip.equipmentList}
+            fees={trip.fees}
+            image={trip.image}
+            nearestHospital={trip.nearestHospital}
+            parkName={trip.parkName}
+            parkWebLink={trip.parkWebLink}
+            reservations={trip.reservations}
+            trailName={trip.trailName}
+          />
+        )}
+      </CardBody>
+    </Card>
   );
 };
 
