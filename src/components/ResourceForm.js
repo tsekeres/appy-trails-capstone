@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { addResource, updateResource } from '../helpers/data/ResourcesData';
 
 const ResourceForm = ({
-  user,
   admin,
   formTitle,
   image,
@@ -21,7 +20,7 @@ const ResourceForm = ({
     title: title || '',
     description: description || '',
     link: link || '',
-    userId: user.userId || admin.userId,
+    userId: admin.userId,
     firebaseKey: firebaseKey || null,
   });
   const history = useHistory();
@@ -37,11 +36,11 @@ const ResourceForm = ({
     e.preventDefault();
     if (resource.firebaseKey) {
       updateResource(resource).then(() => {
-        history.push('/resources');
+        history.push('/trips');
       });
     } else {
       addResource(resource).then(() => {
-        history.push('/resources');
+        history.push('/trips');
       });
 
       setResource({
@@ -110,7 +109,6 @@ const ResourceForm = ({
 
 ResourceForm.propTypes = {
   admin: PropTypes.any,
-  user: PropTypes.any,
   formTitle: PropTypes.string.isRequired,
   image: PropTypes.string,
   title: PropTypes.string,

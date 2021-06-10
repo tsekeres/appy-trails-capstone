@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'reactstrap';
 import TripForm from '../components/TripForm';
 import UpdateTripCards from '../components/UpdateTripCards';
 import { getTrips, getUserTrips } from '../helpers/data/TripsData';
@@ -15,7 +14,7 @@ function TripPlanner({ user, admin }) {
   }, []);
 
   return (
-    <Container className="planner-container d-flex flex-row">
+    <div className="planner-container d-flex flex-row">
       <div className="form-container">
         <TripForm
           className="planner-form"
@@ -58,7 +57,7 @@ function TripPlanner({ user, admin }) {
           </div>
         )}
       </div>
-    </Container>
+    </div>
   );
 }
 
