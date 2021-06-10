@@ -56,11 +56,9 @@ function Routes({
         <Route
           exact
           path="/resources"
-          user={user}
           admin={admin}
           component={() => (
             <Resources
-              user={user}
               admin={admin}
             />
           )}

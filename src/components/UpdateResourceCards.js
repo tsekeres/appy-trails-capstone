@@ -13,9 +13,7 @@ import {
 import { deleteResource } from '../helpers/data/ResourcesData';
 import ResourceForm from './ResourceForm';
 
-const UpdateresourceCards = ({
-  user,
-  setUser,
+const UpdateResourceCards = ({
   admin,
   setAdmin,
   resource,
@@ -29,7 +27,7 @@ const UpdateresourceCards = ({
     switch (type) {
       case 'delete':
         deleteResource(resource.firebaseKey).then(() => {
-          history.push('/resources');
+          history.push('/trips');
         });
         break;
       case 'update':
@@ -54,16 +52,14 @@ const UpdateresourceCards = ({
         <hr></hr>
         <CardLink href={resource.link}>Visit Resource Website</CardLink>
         <Button color='danger' size='sm' onClick={() => handleClick('delete')}>
-          Delete Resource
+          Delete
         </Button>
         <Button color='info' size='sm' onClick={() => handleClick('update')}>
-          {updating ? 'Close Form' : 'Update Resource'}
+          {updating ? 'Close Form' : 'Update'}
         </Button>
         {updating && (
           <ResourceForm
             formTitle='Update Resource'
-            user={user}
-            setUser={setUser}
             admin={admin}
             setAdmin={setAdmin}
             setResources={setResources}
@@ -79,13 +75,11 @@ const UpdateresourceCards = ({
   );
 };
 
-UpdateresourceCards.propTypes = {
-  user: PropTypes.any,
-  setUser: PropTypes.func,
+UpdateResourceCards.propTypes = {
   admin: PropTypes.any,
   setAdmin: PropTypes.func,
   resource: PropTypes.object,
   setResources: PropTypes.func,
 };
 
-export default UpdateresourceCards;
+export default UpdateResourceCards;
