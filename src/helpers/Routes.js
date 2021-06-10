@@ -5,6 +5,7 @@ import Home from '../views/Home';
 import Trips from '../views/Trips';
 import TripPlanner from '../views/TripPlanner';
 import Resources from '../views/Resources';
+import SingleTrip from '../views/SingleTrip';
 
 const PrivateRoute = ({
   component: Component, user, admin, ...rest
@@ -22,7 +23,7 @@ PrivateRoute.propTypes = {
 };
 
 function Routes({
-  user, admin
+  user, admin, trip, setTrips,
 }) {
   return (
     <div>
@@ -40,6 +41,10 @@ function Routes({
               admin={admin}
             />
           )}
+        />
+        <Route
+          path="/trips/:firebaseKey"
+          component={() => <SingleTrip trip={trip} setTrips={setTrips} />}
         />
         <PrivateRoute
           exact
@@ -72,6 +77,8 @@ function Routes({
 Routes.propTypes = {
   user: PropTypes.any,
   admin: PropTypes.any,
+  trip: PropTypes.object,
+  setTrips: PropTypes.func
 };
 
 export default Routes;
