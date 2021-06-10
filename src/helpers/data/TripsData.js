@@ -45,10 +45,17 @@ const deleteTrip = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getSingleTrip = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbURL}/trips/${firebaseKey}.json`)
+    .then((trip) => resolve(trip.data))
+    .catch((error) => reject(error));
+});
+
 export {
   getTrips,
   getUserTrips,
   addTrip,
   updateTrip,
-  deleteTrip
+  deleteTrip,
+  getSingleTrip
 };
