@@ -57,10 +57,10 @@ const ResourceForm = ({
       <Form id="addResourceForm" autoComplete="off" onSubmit={handleSubmit}>
         <h2>{formTitle}</h2>
         <FormGroup>
-          <Label for="resourceImage">Image:</Label>
+          <Label for="image">Image:</Label>
           <Input
-            name="resourceImage"
-            id="resourceImage"
+            name="image"
+            id="image"
             value={resource.image}
             type="url"
             placeholder="Enter an Image URL"
@@ -68,10 +68,10 @@ const ResourceForm = ({
           />
         </FormGroup>
         <FormGroup>
-          <Label for="resourceTitle">Resource Title: </Label>
+          <Label for="title">Resource Title: </Label>
           <Input
-            name="resourceTitle"
-            id="resourceTitle"
+            name="title"
+            id="title"
             value={resource.title}
             type="text"
             placeholder="Enter a Title"
@@ -79,10 +79,10 @@ const ResourceForm = ({
           />
         </FormGroup>
         <FormGroup>
-          <Label for="resourceDescription">Resource Description: </Label>
+          <Label for="description">Resource Description: </Label>
           <Input
-            name="resourceDescription"
-            id="resourceDescription"
+            name="description"
+            id="description"
             value={resource.description}
             type="text"
             placeholder="Enter a Description"
@@ -90,10 +90,10 @@ const ResourceForm = ({
           />
         </FormGroup>
         <FormGroup>
-          <Label for="resourceLink">Resource Link: </Label>
+          <Label for="link">Resource Link: </Label>
           <Input
-            name="resourceLink"
-            id="resourceLink"
+            name="link"
+            id="link"
             value={resource.link}
             type="url"
             placeholder="Enter a Link URL"
