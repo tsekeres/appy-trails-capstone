@@ -34,7 +34,7 @@ const addTrip = (obj) => new Promise((resolve, reject) => {
 const updateTrip = (trip) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbURL}/tripPlan/${trip.firebaseKey}.json`, trip)
-    .then(() => getTrips().then(resolve))
+    .then(() => getTrips().then((TripsArray) => resolve(TripsArray)))
     .catch((error) => reject(error));
 });
 
@@ -46,7 +46,7 @@ const deleteTrip = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 const getSingleTrip = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbURL}/trips/${firebaseKey}.json`)
+  axios.get(`${dbURL}/tripPlan/${firebaseKey}.json`)
     .then((trip) => resolve(trip.data))
     .catch((error) => reject(error));
 });

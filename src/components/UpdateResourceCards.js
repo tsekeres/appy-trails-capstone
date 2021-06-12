@@ -26,8 +26,9 @@ const UpdateResourceCards = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteResource(resource.firebaseKey).then(() => {
-          history.push('/trips');
+        deleteResource(resource.firebaseKey).then((response) => {
+          setResources(response);
+          history.push('/resources');
         });
         break;
       case 'update':
