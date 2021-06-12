@@ -35,12 +35,16 @@ const ResourceForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (resource.firebaseKey) {
-      updateResource(resource).then(() => {
-        history.push('/trips');
+      updateResource(resource).then((response) => {
+        setResource(response);
+      }).then(() => {
+        history.push('/resources');
       });
     } else {
-      addResource(resource).then(() => {
-        history.push('/trips');
+      addResource(resource).then((response) => {
+        setResource(response);
+      }).then(() => {
+        history.push('/resources');
       });
 
       setResource({

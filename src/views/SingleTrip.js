@@ -14,7 +14,7 @@ export default function SingleTrip() {
 
   return (
     <div>
-      <SingleTripCard key={trip.firebaseKey} trip={trip} />
+      <SingleTripCard trip={trip} />
     </div>
   );
 }

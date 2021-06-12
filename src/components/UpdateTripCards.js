@@ -23,8 +23,9 @@ const UpdateTripCards = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteTrip(trip.firebaseKey).then(() => {
-          history.push('/trips');
+        deleteTrip(trip.firebaseKey).then((response) => {
+          setTrips(response);
+          history.push('/trip-planner');
         });
         break;
       case 'update':

@@ -9,6 +9,7 @@ import { addTrip, updateTrip } from '../helpers/data/TripsData';
 const TripForm = ({
   user,
   admin,
+  setTrips,
   formTitle,
   camping,
   difficulty,
@@ -50,13 +51,19 @@ const TripForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (trip.firebaseKey) {
-      updateTrip(trip).then(() => {
-        history.push('/trips');
+      updateTrip(trip).then((response) => {
+        setTrips(response);
+      }).then(() => {
+        history.push('/trip-planner');
       });
     } else {
-      addTrip(trip).then(() => {
-        history.push('/trips');
-      });
+      addTrip(trip)
+        .then((response) => {
+          setTrips(response);
+        })
+        .then(() => {
+          history.push('/trip-planner');
+        });
 
       setTrip({
         camping: '',
@@ -230,6 +237,7 @@ const TripForm = ({
 TripForm.propTypes = {
   admin: PropTypes.any,
   user: PropTypes.any,
+  setTrips: PropTypes.func,
   formTitle: PropTypes.string.isRequired,
   camping: PropTypes.string,
   distance: PropTypes.string,
