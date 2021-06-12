@@ -23,7 +23,7 @@ PrivateRoute.propTypes = {
 };
 
 function Routes({
-  user, admin, trip, setTrips,
+  user, admin
 }) {
   return (
     <div>
@@ -43,8 +43,9 @@ function Routes({
           )}
         />
         <Route
-          path="/trips/:firebaseKey"
-          component={() => <SingleTrip trip={trip} setTrips={setTrips} />}
+          exact
+          path="/trips/:trip.firebaseKey"
+          component={SingleTrip}
         />
         <PrivateRoute
           exact
@@ -68,7 +69,7 @@ function Routes({
             />
           )}
         />
-        <Route path="*" component={Home} />
+        {/* <Route path="*" component={Home} /> */}
       </Switch>
     </div>
   );

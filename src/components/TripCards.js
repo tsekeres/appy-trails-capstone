@@ -10,13 +10,13 @@ import {
   Button,
 } from 'reactstrap';
 
-const TripCards = ({ firebaseKey, trip }) => {
+const TripCards = ({ trip }) => {
   const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
       case 'view':
-        history.push(`/trips/${firebaseKey}`);
+        history.push(`/trips/${trip.firebaseKey}`);
         break;
       default:
         console.warn('nothing selected');
@@ -29,7 +29,7 @@ const TripCards = ({ firebaseKey, trip }) => {
       <CardBody>
         <CardTitle tag="h5">{trip.parkName}</CardTitle>
         <CardText>{trip.trailName}</CardText>
-        <Button color='success' onClick={() => handleClick('view')}>View All Trip Details</Button>
+        <Button color='success' onClick={() => handleClick('view')}>View Trip Details</Button>
       </CardBody>
     </Card>
   );
@@ -37,7 +37,6 @@ const TripCards = ({ firebaseKey, trip }) => {
 
 TripCards.propTypes = {
   trip: PropTypes.object,
-  firebaseKey: PropTypes.string,
 };
 
 export default TripCards;
