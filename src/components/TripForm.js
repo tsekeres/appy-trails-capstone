@@ -25,6 +25,7 @@ const TripForm = ({
   parkWebLink,
   reservations,
   trailName,
+  trailMap,
   firebaseKey,
 }) => {
   const [trip, setTrip] = useState({
@@ -39,6 +40,7 @@ const TripForm = ({
     parkWebLink: parkWebLink || '',
     reservations: reservations || '',
     trailName: trailName || '',
+    trailMap: trailMap || '',
     userId: user.userId || admin.userId,
     firebaseKey: firebaseKey || null,
   });
@@ -96,6 +98,7 @@ const TripForm = ({
         parkWebLink: '',
         reservations: '',
         trailName: '',
+        trailMap: '',
       });
     }
   };
@@ -246,6 +249,17 @@ const TripForm = ({
             onChange={handleInputChange}
           />
         </FormGroup>
+        <FormGroup>
+          <Label for="trailMap">Trail Map Link: </Label>
+          <Input
+            name="trailMap"
+            id="trailMap"
+            value={trip.trailMap}
+            type="url"
+            placeholder="Enter the Trail Map URL"
+            onChange={handleInputChange}
+          />
+        </FormGroup>
 
         <Button type="submit">Submit</Button>
       </Form>
@@ -270,6 +284,7 @@ TripForm.propTypes = {
   parkWebLink: PropTypes.string,
   reservations: PropTypes.string,
   trailName: PropTypes.string,
+  trailMap: PropTypes.string,
   userId: PropTypes.string,
   firebaseKey: PropTypes.string,
 };
