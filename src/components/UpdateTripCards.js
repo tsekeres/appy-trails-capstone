@@ -29,7 +29,7 @@ const UpdateTripCards = ({
             history.push('/trip-planner');
           });
         } else {
-          deleteUserTrip(trip.firebaseKey).then((response) => {
+          deleteUserTrip(trip.firebaseKey, user.userId).then((response) => {
             setUserTrips(response);
             history.push('/trip-planner');
           });

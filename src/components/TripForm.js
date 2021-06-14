@@ -61,7 +61,7 @@ const TripForm = ({
           history.push('/trip-planner');
         });
       } else {
-        updateUserTrip(trip)
+        updateUserTrip(trip, user.userId)
           .then((response) => {
             setUserTrips(response);
           })
@@ -77,7 +77,7 @@ const TripForm = ({
             history.push('/trip-planner');
           });
       } else {
-        addUserTrip(trip)
+        addUserTrip(trip, user.userId)
           .then((response) => {
             setUserTrips(response);
             history.push('/trip-planner');

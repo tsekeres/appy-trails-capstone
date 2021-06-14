@@ -31,7 +31,7 @@ const addTrip = (obj) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const addUserTrip = (obj) => new Promise((resolve, reject) => {
+const addUserTrip = (obj, userId) => new Promise((resolve, reject) => {
   axios
     .post(`${dbURL}/tripPlan.json`, obj)
     .then((response) => {
@@ -39,7 +39,7 @@ const addUserTrip = (obj) => new Promise((resolve, reject) => {
       axios
         .patch(`${dbURL}/tripPlan/${response.data.name}.json`, tripplan)
         .then(() => {
-          getUserTrips().then((tripsArray) => resolve(tripsArray));
+          getUserTrips(userId).then((tripsArray) => resolve(tripsArray));
         });
     })
     .catch((error) => reject(error));
@@ -52,10 +52,10 @@ const updateTrip = (trip) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const updateUserTrip = (trip) => new Promise((resolve, reject) => {
+const updateUserTrip = (trip, userId) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbURL}/tripPlan/${trip.firebaseKey}.json`, trip)
-    .then(() => getUserTrips().then((TripsArray) => resolve(TripsArray)))
+    .then(() => getUserTrips(userId).then((TripsArray) => resolve(TripsArray)))
     .catch((error) => reject(error));
 });
 
@@ -66,10 +66,10 @@ const deleteTrip = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteUserTrip = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteUserTrip = (firebaseKey, userId) => new Promise((resolve, reject) => {
   axios
     .delete(`${dbURL}/tripPlan/${firebaseKey}.json`)
-    .then(() => getUserTrips().then((TripsArray) => resolve(TripsArray)))
+    .then(() => getUserTrips(userId).then((TripsArray) => resolve(TripsArray)))
     .catch((error) => reject(error));
 });
 
