@@ -1,5 +1,7 @@
 # Appy Trails
 ## Netlify Link
+appy-trails.netlify.app
+[![Netlify Status](https://api.netlify.com/api/v1/badges/84a353af-e46e-4ca9-90b6-e1320f789530/deploy-status)](https://app.netlify.com/sites/appy-trails/deploys)
 
 ## Overview 
 This is an application that is designed to help backpackers and hikers to plan and organize trips for themselves and their groups. It will have trip examples available to take advantage of as well as trip creation formats to have users contribute to the catalog of planned trips
