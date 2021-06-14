@@ -27,7 +27,7 @@ const addResource = (obj) => new Promise((resolve, reject) => {
 const updateResource = (resource) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbURL}/resources/${resource.firebaseKey}.json`, resource)
-    .then(() => getResources().then(resolve))
+    .then(() => getResources().then((resourcesArray) => resolve(resourcesArray)))
     .catch((error) => reject(error));
 });
 

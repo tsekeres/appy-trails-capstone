@@ -31,6 +31,20 @@ const addTrip = (obj) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const addUserTrip = (obj, userId) => new Promise((resolve, reject) => {
+  axios
+    .post(`${dbURL}/tripPlan.json`, obj)
+    .then((response) => {
+      const tripplan = { firebaseKey: response.data.name };
+      axios
+        .patch(`${dbURL}/tripPlan/${response.data.name}.json`, tripplan)
+        .then(() => {
+          getUserTrips(userId).then((tripsArray) => resolve(tripsArray));
+        });
+    })
+    .catch((error) => reject(error));
+});
+
 const updateTrip = (trip) => new Promise((resolve, reject) => {
   axios
     .patch(`${dbURL}/tripPlan/${trip.firebaseKey}.json`, trip)
@@ -38,10 +52,24 @@ const updateTrip = (trip) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const updateUserTrip = (trip, userId) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${dbURL}/tripPlan/${trip.firebaseKey}.json`, trip)
+    .then(() => getUserTrips(userId).then((TripsArray) => resolve(TripsArray)))
+    .catch((error) => reject(error));
+});
+
 const deleteTrip = (firebaseKey) => new Promise((resolve, reject) => {
   axios
     .delete(`${dbURL}/tripPlan/${firebaseKey}.json`)
     .then(() => getTrips().then((TripsArray) => resolve(TripsArray)))
+    .catch((error) => reject(error));
+});
+
+const deleteUserTrip = (firebaseKey, userId) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbURL}/tripPlan/${firebaseKey}.json`)
+    .then(() => getUserTrips(userId).then((TripsArray) => resolve(TripsArray)))
     .catch((error) => reject(error));
 });
 
@@ -55,7 +83,10 @@ export {
   getTrips,
   getUserTrips,
   addTrip,
+  addUserTrip,
   updateTrip,
+  updateUserTrip,
   deleteTrip,
+  deleteUserTrip,
   getSingleTrip
 };

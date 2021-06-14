@@ -14,6 +14,7 @@ const ResourceForm = ({
   description,
   link,
   firebaseKey,
+  setResources,
 }) => {
   const [resource, setResource] = useState({
     image: image || '',
@@ -36,14 +37,12 @@ const ResourceForm = ({
     e.preventDefault();
     if (resource.firebaseKey) {
       updateResource(resource).then((response) => {
-        setResource(response);
-      }).then(() => {
+        setResources(response);
         history.push('/resources');
       });
     } else {
       addResource(resource).then((response) => {
-        setResource(response);
-      }).then(() => {
+        setResources(response);
         history.push('/resources');
       });
 
@@ -119,6 +118,7 @@ ResourceForm.propTypes = {
   description: PropTypes.string,
   link: PropTypes.string,
   firebaseKey: PropTypes.string,
+  setResources: PropTypes.func,
 };
 
 export default ResourceForm;

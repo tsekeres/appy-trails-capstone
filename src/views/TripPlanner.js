@@ -22,6 +22,7 @@ function TripPlanner({ user, admin }) {
           user={user}
           admin={admin}
           setTrips={setTrips}
+          setUserTrips={setUserTrips}
         />
       </div>
       <div>
@@ -49,7 +50,7 @@ function TripPlanner({ user, admin }) {
                     key={tripInfo.firebaseKey}
                     user={user}
                     trip={tripInfo}
-                    setTrips={setTrips}
+                    setUserTrips={setUserTrips}
                   />
                 ))}
               </div>

@@ -10,11 +10,11 @@ import {
   CardTitle,
   CardLink,
 } from 'reactstrap';
-import { deleteTrip } from '../helpers/data/TripsData';
+import { deleteTrip, deleteUserTrip } from '../helpers/data/TripsData';
 import TripForm from './TripForm';
 
 const UpdateTripCards = ({
-  user, setUser, admin, setAdmin, trip, setTrips
+  user, setUser, admin, setAdmin, trip, setTrips, setUserTrips,
 }) => {
   const [updating, setUpdating] = useState(false);
 
@@ -23,10 +23,17 @@ const UpdateTripCards = ({
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteTrip(trip.firebaseKey).then((response) => {
-          setTrips(response);
-          history.push('/trip-planner');
-        });
+        if (admin) {
+          deleteTrip(trip.firebaseKey).then((response) => {
+            setTrips(response);
+            history.push('/trip-planner');
+          });
+        } else {
+          deleteUserTrip(trip.firebaseKey, user.userId).then((response) => {
+            setUserTrips(response);
+            history.push('/trip-planner');
+          });
+        }
         break;
       case 'update':
         setUpdating((prevState) => !prevState);
@@ -93,6 +100,7 @@ const UpdateTripCards = ({
             admin={admin}
             setAdmin={setAdmin}
             setTrips={setTrips}
+            setUserTrips={setUserTrips}
             firebaseKey={trip.firebaseKey}
             camping={trip.camping}
             difficulty={trip.difficulty}
@@ -119,6 +127,7 @@ UpdateTripCards.propTypes = {
   setAdmin: PropTypes.func,
   trip: PropTypes.object,
   setTrips: PropTypes.func,
+  setUserTrips: PropTypes.func,
 };
 
 export default UpdateTripCards;
