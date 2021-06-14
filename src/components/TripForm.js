@@ -4,12 +4,15 @@ import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { addTrip, updateTrip } from '../helpers/data/TripsData';
+import {
+  addTrip, addUserTrip, updateTrip, updateUserTrip
+} from '../helpers/data/TripsData';
 
 const TripForm = ({
   user,
   admin,
   setTrips,
+  setUserTrips,
   formTitle,
   camping,
   difficulty,
@@ -51,19 +54,35 @@ const TripForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (trip.firebaseKey) {
-      updateTrip(trip).then((response) => {
-        setTrips(response);
-      }).then(() => {
-        history.push('/trip-planner');
-      });
-    } else {
-      addTrip(trip)
-        .then((response) => {
+      if (admin) {
+        updateTrip(trip).then((response) => {
           setTrips(response);
-        })
-        .then(() => {
+        }).then(() => {
           history.push('/trip-planner');
         });
+      } else {
+        updateUserTrip(trip)
+          .then((response) => {
+            setUserTrips(response);
+          })
+          .then(() => {
+            history.push('/trip-planner');
+          });
+      }
+    } else {
+      if (admin) {
+        addTrip(trip)
+          .then((response) => {
+            setTrips(response);
+            history.push('/trip-planner');
+          });
+      } else {
+        addUserTrip(trip)
+          .then((response) => {
+            setUserTrips(response);
+            history.push('/trip-planner');
+          });
+      }
 
       setTrip({
         camping: '',
@@ -238,6 +257,7 @@ TripForm.propTypes = {
   admin: PropTypes.any,
   user: PropTypes.any,
   setTrips: PropTypes.func,
+  setUserTrips: PropTypes.func,
   formTitle: PropTypes.string.isRequired,
   camping: PropTypes.string,
   distance: PropTypes.string,
