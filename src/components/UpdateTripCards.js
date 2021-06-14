@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -9,16 +10,30 @@ import {
   CardTitle,
   CardLink,
 } from 'reactstrap';
-import { deleteTrip } from '../helpers/data/TripsData';
+import { deleteTrip, deleteUserTrip } from '../helpers/data/TripsData';
 import TripForm from './TripForm';
 
-const UpdateTripCards = ({ trip, setTrips }) => {
+const UpdateTripCards = ({
+  user, setUser, admin, setAdmin, trip, setTrips, setUserTrips,
+}) => {
   const [updating, setUpdating] = useState(false);
+
+  const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
       case 'delete':
-        deleteTrip(trip.firebaseKey).then(setTrips);
+        if (admin) {
+          deleteTrip(trip.firebaseKey).then((response) => {
+            setTrips(response);
+            history.push('/trip-planner');
+          });
+        } else {
+          deleteUserTrip(trip.firebaseKey, user.userId).then((response) => {
+            setUserTrips(response);
+            history.push('/trip-planner');
+          });
+        }
         break;
       case 'update':
         setUpdating((prevState) => !prevState);
@@ -32,28 +47,60 @@ const UpdateTripCards = ({ trip, setTrips }) => {
     <Card>
       <CardImg top width='100%' src={trip.image} alt='Card image cap' />
       <CardBody>
-        <CardTitle tag='h2'>{trip.trailName}</CardTitle>
-        <CardText>{trip.parkName}</CardText>
+        <CardTitle tag='h2'>
+          Trail Name:<br></br>
+          {trip.trailName}
+        </CardTitle>
+        <CardText>
+          Park Name:<br></br>
+          {trip.parkName}
+        </CardText>
         <hr></hr>
-        <CardText>{trip.distance}</CardText>
-        <CardText>{trip.difficulty}</CardText>
-        <CardText>{trip.fees}</CardText>
-        <CardText>{trip.camping}</CardText>
-        <CardText>{trip.reservations}</CardText>
-        <CardText>{trip.nearestHospital}</CardText>
+        <CardText>
+          Trail Distance:<br></br>
+          {trip.distance}
+        </CardText>
+        <CardText>
+          Trail Difficulty:<br></br>
+          {trip.difficulty}
+        </CardText>
+        <CardText>
+          Fees Required:<br></br>
+          {trip.fees}
+        </CardText>
+        <CardText>
+          Camping Available:<br></br>
+          {trip.camping}
+        </CardText>
+        <CardText>
+          Reservations Required:<br></br>
+          {trip.reservations}
+        </CardText>
+        <CardText>
+          Nearest Hospital:<br></br>
+          {trip.nearestHospital}
+        </CardText>
         <hr></hr>
-        <CardText>{trip.equipmentList}</CardText>
+        <CardText>
+          Equipment List:<br></br>
+          {trip.equipmentList}
+        </CardText>
         <CardLink href={trip.parkWebLink}>Visit Park Website</CardLink>
-        <Button color='danger' onClick={() => handleClick('delete')}>
+        <Button color='danger' size='sm' onClick={() => handleClick('delete')}>
           Delete Trip
         </Button>
-        <Button color='info' onClick={() => handleClick('update')}>
+        <Button color='info' size='sm' onClick={() => handleClick('update')}>
           {updating ? 'Close Form' : 'Update Trip'}
         </Button>
         {updating && (
           <TripForm
             formTitle='Update Trip'
+            user={user}
+            setUser={setUser}
+            admin={admin}
+            setAdmin={setAdmin}
             setTrips={setTrips}
+            setUserTrips={setUserTrips}
             firebaseKey={trip.firebaseKey}
             camping={trip.camping}
             difficulty={trip.difficulty}
@@ -74,8 +121,13 @@ const UpdateTripCards = ({ trip, setTrips }) => {
 };
 
 UpdateTripCards.propTypes = {
+  user: PropTypes.any,
+  setUser: PropTypes.func,
+  admin: PropTypes.any,
+  setAdmin: PropTypes.func,
   trip: PropTypes.object,
   setTrips: PropTypes.func,
+  setUserTrips: PropTypes.func,
 };
 
 export default UpdateTripCards;

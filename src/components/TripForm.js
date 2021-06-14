@@ -4,11 +4,16 @@ import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { addTrip, updateTrip } from '../helpers/data/TripsData';
+import {
+  addTrip, addUserTrip, updateTrip, updateUserTrip
+} from '../helpers/data/TripsData';
 
 const TripForm = ({
-  formTitle,
+  user,
+  admin,
   setTrips,
+  setUserTrips,
+  formTitle,
   camping,
   difficulty,
   distance,
@@ -20,7 +25,6 @@ const TripForm = ({
   parkWebLink,
   reservations,
   trailName,
-  userId,
   firebaseKey,
 }) => {
   const [trip, setTrip] = useState({
@@ -35,8 +39,8 @@ const TripForm = ({
     parkWebLink: parkWebLink || '',
     reservations: reservations || '',
     trailName: trailName || '',
-    userId: userId || '',
-    firebaseKey: firebaseKey || '',
+    userId: user.userId || admin.userId,
+    firebaseKey: firebaseKey || null,
   });
   const history = useHistory();
 
@@ -50,10 +54,35 @@ const TripForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (trip.firebaseKey) {
-      updateTrip(trip).then(setTrips);
+      if (admin) {
+        updateTrip(trip).then((response) => {
+          setTrips(response);
+        }).then(() => {
+          history.push('/trip-planner');
+        });
+      } else {
+        updateUserTrip(trip, user.userId)
+          .then((response) => {
+            setUserTrips(response);
+          })
+          .then(() => {
+            history.push('/trip-planner');
+          });
+      }
     } else {
-      addTrip(trip).then(setTrips);
-      history.push('/trips');
+      if (admin) {
+        addTrip(trip)
+          .then((response) => {
+            setTrips(response);
+            history.push('/trip-planner');
+          });
+      } else {
+        addUserTrip(trip, user.userId)
+          .then((response) => {
+            setUserTrips(response);
+            history.push('/trip-planner');
+          });
+      }
 
       setTrip({
         camping: '',
@@ -67,8 +96,6 @@ const TripForm = ({
         parkWebLink: '',
         reservations: '',
         trailName: '',
-        userId: '',
-        firebaseKey: null,
       });
     }
   };
@@ -82,7 +109,7 @@ const TripForm = ({
           <Input
             name="trailName"
             id="trailName"
-            value={trip.trialName}
+            value={trip.trailName}
             type="text"
             placeholder="Enter a Trail Name"
             onChange={handleInputChange}
@@ -128,9 +155,9 @@ const TripForm = ({
             name="difficulty"
             id="difficulty"
             value={trip.difficulty}
-            placeholder="Enter a Trail Difficulty"
             onChange={handleInputChange}
           >
+            <option>Pick a Difficulty option</option>
             <option>Easy</option>
             <option>Moderate</option>
             <option>Moderately Strenuous</option>
@@ -145,9 +172,9 @@ const TripForm = ({
             name="fees"
             id="fees"
             value={trip.fees}
-            placeholder="Enter if Fees are Required"
             onChange={handleInputChange}
           >
+            <option>Pick a Fees option</option>
             <option>Yes</option>
             <option>No</option>
           </Input>
@@ -159,9 +186,9 @@ const TripForm = ({
             name="camping"
             id="camping"
             value={trip.camping}
-            placeholder="Enter if Camping as Available"
             onChange={handleInputChange}
           >
+            <option>Pick a Camping option</option>
             <option>No</option>
             <option>Campground Only</option>
             <option>Campground and Backcountry Camping</option>
@@ -175,9 +202,9 @@ const TripForm = ({
             name="reservations"
             id="reservations"
             value={trip.reservations}
-            placeholder="Enter if Reservations are Required"
             onChange={handleInputChange}
           >
+            <option>Pick a Reservations option</option>
             <option>Yes</option>
             <option>No</option>
           </Input>
@@ -189,9 +216,9 @@ const TripForm = ({
             id="equipmentList"
             value={trip.equipmentList}
             type="select"
-            placeholder="Pick an Equipment list"
             onChange={handleInputChange}
           >
+            <option>Pick an Equipment List option</option>
             <option>Summer list</option>
             <option>Winter list</option>
             <option>Shoulder Season list</option>
@@ -227,8 +254,11 @@ const TripForm = ({
 };
 
 TripForm.propTypes = {
-  formTitle: PropTypes.string.isRequired,
+  admin: PropTypes.any,
+  user: PropTypes.any,
   setTrips: PropTypes.func,
+  setUserTrips: PropTypes.func,
+  formTitle: PropTypes.string.isRequired,
   camping: PropTypes.string,
   distance: PropTypes.string,
   difficulty: PropTypes.string,
