@@ -11,9 +11,9 @@ import {
 
 const SingleTripCard = ({ trip }) => (
   <Card>
-    <CardImg top width='100%' src={trip.image} alt='Card image cap' />
+    <CardImg top width="100%" src={trip.image} alt="Card image cap" />
     <CardBody>
-      <CardTitle tag='h2'>
+      <CardTitle tag="h2">
         Trail Name:<br></br>
         {trip.trailName}
       </CardTitle>
@@ -51,6 +51,7 @@ const SingleTripCard = ({ trip }) => (
         Equipment List:<br></br>
         {trip.equipmentList}
       </CardText>
+      <CardLink href={trip.trailMap}>Trail Map</CardLink>
       <CardLink href={trip.parkWebLink}>Visit Park Website</CardLink>
     </CardBody>
   </Card>
