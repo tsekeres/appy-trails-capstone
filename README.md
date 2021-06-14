@@ -1,6 +1,6 @@
 # Appy Trails
 ## Netlify Link
-appy-trails.netlify.app
+https://appy-trails.netlify.app/
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/84a353af-e46e-4ca9-90b6-e1320f789530/deploy-status)](https://app.netlify.com/sites/appy-trails/deploys)
 
