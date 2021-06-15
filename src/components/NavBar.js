@@ -11,7 +11,7 @@ import {
   Button,
 } from 'reactstrap';
 import { signInUser, signOutUser } from '../helpers/auth';
-import hikinglogo2 from '../assets/hikinglogo2.jpg';
+import Logo from '../assets/Logo.png';
 
 const NavBar = ({ user, admin }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ const NavBar = ({ user, admin }) => {
     <div>
       <Navbar fixed="top" color="light" light expand="md">
         <NavbarBrand href="/home">
-          <img className="navLogo" src={hikinglogo2}></img>
+          <img className="navLogo" src={Logo}></img>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
