@@ -57,6 +57,11 @@ const UpdateTripCards = ({
         </CardText>
         <hr></hr>
         <CardText>
+          Trip Description:<br></br>
+          {trip.description}
+        </CardText>
+        <hr></hr>
+        <CardText>
           Trail Distance:<br></br>
           {trip.distance}
         </CardText>
@@ -81,12 +86,10 @@ const UpdateTripCards = ({
           {trip.nearestHospital}
         </CardText>
         <hr></hr>
-        <CardText>
-          Equipment List:<br></br>
-          {trip.equipmentList}
-        </CardText>
         <CardLink href={trip.trailMap}>Trail Map</CardLink>
+        <br></br>
         <CardLink href={trip.parkWebLink}>Visit Park Website</CardLink>
+        <hr></hr>
         <Button color='danger' size='sm' onClick={() => handleClick('delete')}>
           Delete Trip
         </Button>
@@ -106,7 +109,6 @@ const UpdateTripCards = ({
             camping={trip.camping}
             difficulty={trip.difficulty}
             distance={trip.distance}
-            equipmentList={trip.equipmentList}
             fees={trip.fees}
             image={trip.image}
             nearestHospital={trip.nearestHospital}

@@ -15,9 +15,9 @@ const TripForm = ({
   setUserTrips,
   formTitle,
   camping,
+  description,
   difficulty,
   distance,
-  equipmentList,
   fees,
   image,
   nearestHospital,
@@ -30,9 +30,9 @@ const TripForm = ({
 }) => {
   const [trip, setTrip] = useState({
     camping: camping || '',
+    description: description || '',
     distance: distance || '',
     difficulty: difficulty || '',
-    equipmentList: equipmentList || '',
     fees: fees || '',
     image: image || '',
     nearestHospital: nearestHospital || '',
@@ -88,9 +88,9 @@ const TripForm = ({
 
       setTrip({
         camping: '',
+        description: '',
         distance: '',
         difficulty: '',
-        equipmentList: '',
         fees: '',
         image: '',
         nearestHospital: '',
@@ -152,6 +152,17 @@ const TripForm = ({
           />
         </FormGroup>
         <FormGroup>
+          <Label for="description">Trip Description : </Label>
+          <Input
+            name="description"
+            id="description"
+            value={trip.description}
+            type="text"
+            placeholder="Enter a Description"
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+        <FormGroup>
           <Label for="difficulty">Trail Difficulty: </Label>
           <Input
             type="select"
@@ -178,7 +189,8 @@ const TripForm = ({
             onChange={handleInputChange}
           >
             <option>Pick a Fees option</option>
-            <option>Yes</option>
+            <option>Yes, for camping.</option>
+            <option>Yes, for hiking.</option>
             <option>No</option>
           </Input>
         </FormGroup>
@@ -210,21 +222,6 @@ const TripForm = ({
             <option>Pick a Reservations option</option>
             <option>Yes</option>
             <option>No</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="equipmentList">Equipment List: </Label>
-          <Input
-            name="equipmentList"
-            id="equipmentList"
-            value={trip.equipmentList}
-            type="select"
-            onChange={handleInputChange}
-          >
-            <option>Pick an Equipment List option</option>
-            <option>Summer list</option>
-            <option>Winter list</option>
-            <option>Shoulder Season list</option>
           </Input>
         </FormGroup>
         <FormGroup>
@@ -274,9 +271,9 @@ TripForm.propTypes = {
   setUserTrips: PropTypes.func,
   formTitle: PropTypes.string.isRequired,
   camping: PropTypes.string,
+  description: PropTypes.string,
   distance: PropTypes.string,
   difficulty: PropTypes.string,
-  equipmentList: PropTypes.string,
   fees: PropTypes.string,
   image: PropTypes.string,
   nearestHospital: PropTypes.string,

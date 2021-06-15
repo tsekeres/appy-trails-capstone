@@ -11,6 +11,9 @@ function Trips() {
 
   return (
     <>
+      <div className="trips-header">
+        <h1>Trip Plans</h1>
+      </div>
       <div className='card-container trips-view'>
         {trips?.map((tripInfo) => (
           <TripCards
