@@ -15,6 +15,7 @@ const TripForm = ({
   setUserTrips,
   formTitle,
   camping,
+  description,
   difficulty,
   distance,
   fees,
@@ -29,6 +30,7 @@ const TripForm = ({
 }) => {
   const [trip, setTrip] = useState({
     camping: camping || '',
+    description: description || '',
     distance: distance || '',
     difficulty: difficulty || '',
     fees: fees || '',
@@ -86,6 +88,7 @@ const TripForm = ({
 
       setTrip({
         camping: '',
+        description: '',
         distance: '',
         difficulty: '',
         fees: '',
@@ -145,6 +148,17 @@ const TripForm = ({
             value={trip.distance}
             type="text"
             placeholder="Enter a Distance for the Trail"
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="description">Trip Description : </Label>
+          <Input
+            name="description"
+            id="description"
+            value={trip.description}
+            type="text"
+            placeholder="Enter a Description"
             onChange={handleInputChange}
           />
         </FormGroup>
@@ -257,6 +271,7 @@ TripForm.propTypes = {
   setUserTrips: PropTypes.func,
   formTitle: PropTypes.string.isRequired,
   camping: PropTypes.string,
+  description: PropTypes.string,
   distance: PropTypes.string,
   difficulty: PropTypes.string,
   fees: PropTypes.string,

@@ -57,6 +57,11 @@ const UpdateTripCards = ({
         </CardText>
         <hr></hr>
         <CardText>
+          Trip Description:<br></br>
+          {trip.description}
+        </CardText>
+        <hr></hr>
+        <CardText>
           Trail Distance:<br></br>
           {trip.distance}
         </CardText>
@@ -82,7 +87,9 @@ const UpdateTripCards = ({
         </CardText>
         <hr></hr>
         <CardLink href={trip.trailMap}>Trail Map</CardLink>
+        <br></br>
         <CardLink href={trip.parkWebLink}>Visit Park Website</CardLink>
+        <hr></hr>
         <Button color='danger' size='sm' onClick={() => handleClick('delete')}>
           Delete Trip
         </Button>

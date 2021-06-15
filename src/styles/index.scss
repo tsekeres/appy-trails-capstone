@@ -5,19 +5,25 @@ body {
   background-color: $favColor;
 }
 
+// Nav Bar
 .navLogo {
   border-radius: 50%;
   height: 40px;
 }
 
+li {
+  list-style: none;
+}
+
+// Trips view
 .card-container {
   display: flex;
   flex-flow: row wrap;
-  margin-top: 100px;
+  margin-top: 50px;
   justify-content: center;
 
   .card {
-    width: 700px;
+    width: 300px;
     height: auto;
     margin: 15px;
     display: flex;
@@ -30,24 +36,30 @@ body {
   }
 }
 
-li {
-  list-style: none;
-}
-
-.user-welcome {
+.trips-header {
   margin-top: 100px;
-  color: black;
+  display: center;
 }
 
-.jumbotron {
-  background-color: $favColor;
-  // background: url('../assets/hikinglogo2.jpg') no-repeat center center;
-}
-
-.memoji {
-  border-radius: 50%;
-  height: 300px;
+// Trips Planner View
+.card-container-b {
+  display: flex;
+  flex-flow: row wrap;
   margin-top: 100px;
+  justify-content: center;
+
+  .card {
+    width: 600px;
+    height: auto;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-body {
+    flex: none;
+  }
 }
 
 .planner-container {
@@ -67,6 +79,25 @@ li {
   }
 }
 
+// Home View
+.welcome p {
+  color: white;
+}
+
+.homeView {
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.memoji {
+  border-radius: 50%;
+  height: 300px;
+  margin-top: 100px;
+}
+
+// Resources View
 .card-container-a {
   display: flex;
   flex-flow: row wrap;
@@ -87,6 +118,7 @@ li {
   }
 }
 
+// Single Trip View
 .single-trip-card {
   width: 50%;
 }

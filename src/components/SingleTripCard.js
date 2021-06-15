@@ -25,6 +25,11 @@ const SingleTripCard = ({ trip }) => (
         </CardText>
         <hr></hr>
         <CardText>
+          Trip Description:<br></br>
+          {trip.description}
+        </CardText>
+        <hr></hr>
+        <CardText>
           Trail Distance: {trip.distance}
         </CardText>
         <CardText>
