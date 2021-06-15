@@ -13,7 +13,7 @@ export default function SingleTrip() {
   }, []);
 
   return (
-    <div>
+    <div className="card-container trips-view">
       <SingleTripCard trip={trip} />
     </div>
   );

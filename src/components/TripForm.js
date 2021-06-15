@@ -17,7 +17,6 @@ const TripForm = ({
   camping,
   difficulty,
   distance,
-  equipmentList,
   fees,
   image,
   nearestHospital,
@@ -32,7 +31,6 @@ const TripForm = ({
     camping: camping || '',
     distance: distance || '',
     difficulty: difficulty || '',
-    equipmentList: equipmentList || '',
     fees: fees || '',
     image: image || '',
     nearestHospital: nearestHospital || '',
@@ -90,7 +88,6 @@ const TripForm = ({
         camping: '',
         distance: '',
         difficulty: '',
-        equipmentList: '',
         fees: '',
         image: '',
         nearestHospital: '',
@@ -178,7 +175,8 @@ const TripForm = ({
             onChange={handleInputChange}
           >
             <option>Pick a Fees option</option>
-            <option>Yes</option>
+            <option>Yes, for camping.</option>
+            <option>Yes, for hiking.</option>
             <option>No</option>
           </Input>
         </FormGroup>
@@ -210,21 +208,6 @@ const TripForm = ({
             <option>Pick a Reservations option</option>
             <option>Yes</option>
             <option>No</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="equipmentList">Equipment List: </Label>
-          <Input
-            name="equipmentList"
-            id="equipmentList"
-            value={trip.equipmentList}
-            type="select"
-            onChange={handleInputChange}
-          >
-            <option>Pick an Equipment List option</option>
-            <option>Summer list</option>
-            <option>Winter list</option>
-            <option>Shoulder Season list</option>
           </Input>
         </FormGroup>
         <FormGroup>
@@ -276,7 +259,6 @@ TripForm.propTypes = {
   camping: PropTypes.string,
   distance: PropTypes.string,
   difficulty: PropTypes.string,
-  equipmentList: PropTypes.string,
   fees: PropTypes.string,
   image: PropTypes.string,
   nearestHospital: PropTypes.string,

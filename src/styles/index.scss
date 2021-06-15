@@ -17,7 +17,7 @@ body {
   justify-content: center;
 
   .card {
-    width: 300px;
+    width: 700px;
     height: auto;
     margin: 15px;
     display: flex;
@@ -85,4 +85,8 @@ li {
   .card-body {
     flex: none;
   }
+}
+
+.single-trip-card {
+  width: 50%;
 }
