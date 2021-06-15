@@ -107,6 +107,7 @@ const UpdateTripCards = ({
             setUserTrips={setUserTrips}
             firebaseKey={trip.firebaseKey}
             camping={trip.camping}
+            description={trip.description}
             difficulty={trip.difficulty}
             distance={trip.distance}
             fees={trip.fees}

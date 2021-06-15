@@ -24,12 +24,14 @@ const TripCards = ({ trip }) => {
   };
 
   return (
-    <Card className="trip-card">
-      <CardImg top width="90%" src={trip.image} alt="Card image cap" />
+    <Card className='trip-card'>
+      <CardImg top width='100%' src={trip.image} alt='Card image cap' />
       <CardBody>
-        <CardTitle tag="h5">{trip.parkName}</CardTitle>
+        <CardTitle tag='h5'>{trip.parkName}</CardTitle>
         <CardText>{trip.trailName}</CardText>
-        <Button color='success' onClick={() => handleClick('view')}>View Trip Details</Button>
+        <Button color='success' size='sm' onClick={() => handleClick('view')}>
+          View Trip Details
+        </Button>
       </CardBody>
     </Card>
   );
