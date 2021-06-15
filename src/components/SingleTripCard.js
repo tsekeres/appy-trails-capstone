@@ -11,9 +11,6 @@ import {
 
 const SingleTripCard = ({ trip }) => (
   <>
-    <div>
-      <h1>{trip.trailName}</h1>
-    </div>
     <Card className="single-trip-card">
       <CardImg top width="100%" src={trip.image} alt="Card image cap" />
       <CardBody>

@@ -40,7 +40,7 @@ const UpdateResourceCards = ({
   };
 
   return (
-    <Card>
+    <Card className="resource-card">
       <CardImg top width='100%' src={resource.image} alt='Card image cap' />
       <CardBody>
         <CardTitle tag='h2'>
