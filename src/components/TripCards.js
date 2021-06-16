@@ -25,13 +25,21 @@ const TripCards = ({ trip }) => {
 
   return (
     <Card className='trip-card'>
-      <CardImg top width='100%' src={trip.image} alt='Card image cap' />
+      <CardImg
+        top
+        width='100%'
+        className='trip-image'
+        src={trip.image}
+        alt='Card image cap'
+      />
       <CardBody>
         <CardTitle tag='h5'>{trip.parkName}</CardTitle>
         <CardText>{trip.trailName}</CardText>
-        <Button color='success' size='sm' onClick={() => handleClick('view')}>
-          View Trip Details
-        </Button>
+        <div className='trip-button'>
+          <Button color='success' size='sm' onClick={() => handleClick('view')}>
+            View Trip Details
+          </Button>
+        </div>
       </CardBody>
     </Card>
   );
