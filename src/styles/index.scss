@@ -5,19 +5,25 @@ body {
   background-color: $favColor;
 }
 
+// Nav Bar
 .navLogo {
   border-radius: 50%;
   height: 40px;
 }
 
+li {
+  list-style: none;
+}
+
+// Trips view
 .card-container {
   display: flex;
   flex-flow: row wrap;
-  margin-top: 100px;
+  margin-top: 30px;
   justify-content: center;
 
   .card {
-    width: 300px;
+    width: 150px;
     height: auto;
     margin: 15px;
     display: flex;
@@ -30,25 +36,29 @@ body {
   }
 }
 
-li {
-  list-style: none;
+.trip-image {
+  width: 100%;
+  height: 5em;
+  object-fit: fill;
 }
 
-.user-welcome {
+.trip-card {
+  box-shadow: 5px 5px 5px 0px rgb(4, 48, 8);
+}
+
+.trips-header {
   margin-top: 100px;
-  color: black;
+  text-align: center;
 }
 
-.jumbotron {
-  background-color: $favColor;
-  // background: url('../assets/hikinglogo2.jpg') no-repeat center center;
+.trips-background {
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
 }
 
-.memoji {
-  border-radius: 50%;
-  height: 300px;
-  margin-top: 100px;
-}
+// Trips Planner View
 
 .planner-container {
   margin-top: 100px;
@@ -60,6 +70,7 @@ li {
 }
 
 .form-container {
+  flex-direction: column;
   padding: 10px;
 
   h2 {
@@ -70,7 +81,7 @@ li {
 .card-container-a {
   display: flex;
   flex-flow: row wrap;
-  margin-top: 25px;
+  margin-top: 30px;
   justify-content: center;
 
   .card {
@@ -85,4 +96,62 @@ li {
   .card-body {
     flex: none;
   }
+}
+
+.trip-image {
+  width: 100%;
+  height: 5em;
+  object-fit: fill;
+}
+
+.update-trip-card {
+  box-shadow: 5px 5px 5px 0px rgb(4, 48, 8);
+}
+
+// Home View
+.welcome p {
+  color: white;
+}
+
+.homeView {
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.memoji {
+  border-radius: 50%;
+  height: 300px;
+  margin-top: 100px;
+}
+
+// Resources View
+.resource-card {
+  box-shadow: 5px 5px 5px 0px rgb(4, 48, 8);
+}
+
+// Single Trip View
+.card-container-b {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 100px;
+  justify-content: center;
+
+  .card {
+    width: 70%;
+    height: auto;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-body {
+    flex: none;
+  }
+}
+
+.single-trip-card {
+  box-shadow: 5px 5px 5px 0px rgb(4, 48, 8);
 }

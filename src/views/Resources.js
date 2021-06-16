@@ -13,11 +13,14 @@ function Resources({ admin }) {
   }, []);
 
   return (
-    <div className="planner-container d-flex flex-row">
+    <div>
       {admin !== null && (
         <div>
           {admin ? (
-            <>
+            <div className="planner-container d-flex flex-row">
+              <div>
+                <h2>Resources</h2>
+              </div>
               <div className="form-container">
                 <ResourceForm
                   className="planner-form"
@@ -27,25 +30,24 @@ function Resources({ admin }) {
                 />
               </div>
               <div>
-                <h2>Resources</h2>
+                <div className="card-container-a">
+                  {resources?.map((resourceInfo) => (
+                    <UpdateResourceCards
+                      key={resourceInfo.firebaseKey}
+                      admin={admin}
+                      resource={resourceInfo}
+                      setResources={setResources}
+                    />
+                  ))}
+                </div>
               </div>
-              <div className="card-container-a">
-                {resources?.map((resourceInfo) => (
-                  <UpdateResourceCards
-                    key={resourceInfo.firebaseKey}
-                    admin={admin}
-                    resource={resourceInfo}
-                    setResources={setResources}
-                  />
-                ))}
-              </div>
-            </>
+            </div>
           ) : (
-            <>
+            <div className="planner-container">
               <div>
                 <h2>Resources</h2>
               </div>
-              <div className="card-container resources-view">
+              <div className="card-container-a resources-view">
                 {resources?.map((resourceInfo) => (
                   <ResourceCards
                     key={resourceInfo.firebaseKey}
@@ -55,7 +57,7 @@ function Resources({ admin }) {
                   />
                 ))}
               </div>
-            </>
+            </div>
           )}
         </div>
       )}

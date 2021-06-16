@@ -78,8 +78,6 @@ function Routes({
 Routes.propTypes = {
   user: PropTypes.any,
   admin: PropTypes.any,
-  trip: PropTypes.object,
-  setTrips: PropTypes.func
 };
 
 export default Routes;

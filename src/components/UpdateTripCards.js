@@ -8,7 +8,6 @@ import {
   CardImg,
   CardText,
   CardTitle,
-  CardLink,
 } from 'reactstrap';
 import { deleteTrip, deleteUserTrip } from '../helpers/data/TripsData';
 import TripForm from './TripForm';
@@ -44,10 +43,10 @@ const UpdateTripCards = ({
   };
 
   return (
-    <Card>
+    <Card className='update-trip-card'>
       <CardImg top width='100%' src={trip.image} alt='Card image cap' />
       <CardBody>
-        <CardTitle tag='h2'>
+        <CardTitle tag='h5'>
           Trail Name:<br></br>
           {trip.trailName}
         </CardTitle>
@@ -55,43 +54,18 @@ const UpdateTripCards = ({
           Park Name:<br></br>
           {trip.parkName}
         </CardText>
-        <hr></hr>
-        <CardText>
-          Trail Distance:<br></br>
-          {trip.distance}
-        </CardText>
-        <CardText>
-          Trail Difficulty:<br></br>
-          {trip.difficulty}
-        </CardText>
-        <CardText>
-          Fees Required:<br></br>
-          {trip.fees}
-        </CardText>
-        <CardText>
-          Camping Available:<br></br>
-          {trip.camping}
-        </CardText>
-        <CardText>
-          Reservations Required:<br></br>
-          {trip.reservations}
-        </CardText>
-        <CardText>
-          Nearest Hospital:<br></br>
-          {trip.nearestHospital}
-        </CardText>
-        <hr></hr>
-        <CardText>
-          Equipment List:<br></br>
-          {trip.equipmentList}
-        </CardText>
-        <CardLink href={trip.parkWebLink}>Visit Park Website</CardLink>
-        <Button color='danger' size='sm' onClick={() => handleClick('delete')}>
-          Delete Trip
-        </Button>
-        <Button color='info' size='sm' onClick={() => handleClick('update')}>
-          {updating ? 'Close Form' : 'Update Trip'}
-        </Button>
+        <div className='trip-button'>
+          <Button
+            color='danger'
+            size='sm'
+            onClick={() => handleClick('delete')}
+          >
+            Delete Trip
+          </Button>
+          <Button color='info' size='sm' onClick={() => handleClick('update')}>
+            {updating ? 'Close Form' : 'Update Trip'}
+          </Button>
+        </div>
         {updating && (
           <TripForm
             formTitle='Update Trip'
@@ -103,9 +77,9 @@ const UpdateTripCards = ({
             setUserTrips={setUserTrips}
             firebaseKey={trip.firebaseKey}
             camping={trip.camping}
+            description={trip.description}
             difficulty={trip.difficulty}
             distance={trip.distance}
-            equipmentList={trip.equipmentList}
             fees={trip.fees}
             image={trip.image}
             nearestHospital={trip.nearestHospital}
@@ -113,6 +87,7 @@ const UpdateTripCards = ({
             parkWebLink={trip.parkWebLink}
             reservations={trip.reservations}
             trailName={trip.trailName}
+            trailMap={trip.trailMap}
           />
         )}
       </CardBody>

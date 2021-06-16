@@ -40,24 +40,28 @@ const UpdateResourceCards = ({
   };
 
   return (
-    <Card>
+    <Card className='resource-card'>
       <CardImg top width='100%' src={resource.image} alt='Card image cap' />
       <CardBody>
-        <CardTitle tag='h2'>
-          {resource.title}
-        </CardTitle>
-        <hr></hr>
-        <CardText>
-          {resource.description}
-        </CardText>
-        <hr></hr>
-        <CardLink href={resource.link}>Visit Resource Website</CardLink>
-        <Button color='danger' size='sm' onClick={() => handleClick('delete')}>
-          Delete
-        </Button>
-        <Button color='info' size='sm' onClick={() => handleClick('update')}>
-          {updating ? 'Close Form' : 'Update'}
-        </Button>
+        <div>
+          <CardTitle tag='h2'>{resource.title}</CardTitle>
+          <hr></hr>
+          <CardText>{resource.description}</CardText>
+          <hr></hr>
+          <CardLink href={resource.link}>Visit Resource Website</CardLink>
+        </div>
+        <div className='resource-button'>
+          <Button
+            color='danger'
+            size='sm'
+            onClick={() => handleClick('delete')}
+          >
+            Delete
+          </Button>
+          <Button color='info' size='sm' onClick={() => handleClick('update')}>
+            {updating ? 'Close Form' : 'Update'}
+          </Button>
+        </div>
         {updating && (
           <ResourceForm
             formTitle='Update Resource'
