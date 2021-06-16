@@ -36,6 +36,12 @@ li {
   }
 }
 
+.trip-image {
+  width: 100%;
+  height: 5em;
+  object-fit: fill;
+}
+
 .trip-card {
   box-shadow: 5px 5px 5px 0px rgb(4, 48, 8);
 }
@@ -43,6 +49,13 @@ li {
 .trips-header {
   margin-top: 100px;
   text-align: center;
+}
+
+.trips-background {
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
 }
 
 // Trips Planner View
@@ -57,11 +70,42 @@ li {
 }
 
 .form-container {
+  flex-direction: column;
   padding: 10px;
 
   h2 {
     text-align: center;
   }
+}
+
+.card-container-a {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 30px;
+  justify-content: center;
+
+  .card {
+    width: 220px;
+    height: auto;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-body {
+    flex: none;
+  }
+}
+
+.trip-image {
+  width: 100%;
+  height: 5em;
+  object-fit: fill;
+}
+
+.update-trip-card {
+  box-shadow: 5px 5px 5px 0px rgb(4, 48, 8);
 }
 
 // Home View
@@ -83,26 +127,6 @@ li {
 }
 
 // Resources View
-.card-container-a {
-  display: flex;
-  flex-flow: row wrap;
-  margin-top: 25px;
-  justify-content: center;
-
-  .card {
-    width: 220px;
-    height: auto;
-    margin: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .card-body {
-    flex: none;
-  }
-}
-
 .resource-card {
   box-shadow: 5px 5px 5px 0px rgb(4, 48, 8);
 }
@@ -126,4 +150,8 @@ li {
   .card-body {
     flex: none;
   }
+}
+
+.single-trip-card {
+  box-shadow: 5px 5px 5px 0px rgb(4, 48, 8);
 }

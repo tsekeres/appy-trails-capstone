@@ -14,7 +14,7 @@ function Trips() {
       <div className="trips-header">
         <h1>Trip Plans</h1>
       </div>
-      <div className='card-container trips-view'>
+      <div className="card-container trips-view">
         {trips?.map((tripInfo) => (
           <TripCards
             key={tripInfo.firebaseKey}
