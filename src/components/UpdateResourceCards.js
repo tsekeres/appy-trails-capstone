@@ -52,16 +52,24 @@ const UpdateResourceCards = ({
           <hr></hr>
         </div>
         <div className='resource-button'>
-          <Button
-            color='danger'
-            size='sm'
-            onClick={() => handleClick('delete')}
-          >
-            Delete
-          </Button>
-          <Button color='info' size='sm' onClick={() => handleClick('update')}>
-            {updating ? 'Close Form' : 'Update'}
-          </Button>
+          <div>
+            <Button
+              color='danger'
+              size='sm'
+              onClick={() => handleClick('delete')}
+            >
+              Delete
+            </Button>
+          </div>
+          <div>
+            <Button
+              color='info'
+              size='sm'
+              onClick={() => handleClick('update')}
+            >
+              {updating ? 'Close Form' : 'Update'}
+            </Button>
+          </div>
         </div>
         {updating && (
           <ResourceForm

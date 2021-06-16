@@ -46,6 +46,22 @@ const NavBar = ({ user, admin }) => {
             </NavItem>
           </Nav>
         </Collapse>
+        {user !== null && (
+          <NavItem className="nav-id-info">
+            {user || admin ? (
+              <div className="user-info">
+                <div>
+                  <img className="profilePic" src={user.profileImage || admin.profileImage}></img>
+                </div>
+                <div className="userInfo">
+                  <div>{user.fullName || admin.fullName}</div>
+                </div>
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </NavItem>
+        )}
         {(user || admin) !== null && (
           <NavItem>
             {user || admin ? (

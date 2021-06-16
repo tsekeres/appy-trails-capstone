@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, CardBody, CardImg, CardTitle, CardText, CardLink,
+  Card, CardBody, CardImg, CardText, CardTitle, CardLink,
 } from 'reactstrap';
 
 const ResourceCards = ({ resource }) => (
   <Card className='resource-card'>
     <CardImg top width='90%' src={resource.image} alt='Card image cap' />
     <CardBody>
-      <CardTitle tag='h5'>{resource.title}</CardTitle>
+      <CardTitle tag='h2'>{resource.title}</CardTitle>
       <hr></hr>
       <CardText>{resource.description}</CardText>
       <hr></hr>

@@ -50,6 +50,7 @@ const UpdateTripCards = ({
           Trail Name:<br></br>
           {trip.trailName}
         </CardTitle>
+        <CardText>Created By: {trip.creator}</CardText>
         <CardText>
           Park Name:<br></br>
           {trip.parkName}
@@ -77,6 +78,7 @@ const UpdateTripCards = ({
             setUserTrips={setUserTrips}
             firebaseKey={trip.firebaseKey}
             camping={trip.camping}
+            creator={trip.creator}
             description={trip.description}
             difficulty={trip.difficulty}
             distance={trip.distance}
