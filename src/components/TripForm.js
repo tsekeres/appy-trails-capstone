@@ -30,6 +30,7 @@ const TripForm = ({
 }) => {
   const [trip, setTrip] = useState({
     camping: camping || '',
+    creator: user.fullName || admin.fullName,
     description: description || '',
     distance: distance || '',
     difficulty: difficulty || '',
