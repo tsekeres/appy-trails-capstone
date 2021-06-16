@@ -49,6 +49,7 @@ const UpdateResourceCards = ({
           <CardText>{resource.description}</CardText>
           <hr></hr>
           <CardLink href={resource.link}>Visit Resource Website</CardLink>
+          <hr></hr>
         </div>
         <div className='resource-button'>
           <Button

@@ -18,9 +18,6 @@ function Resources({ admin }) {
         <div>
           {admin ? (
             <div className="planner-container d-flex flex-row">
-              <div>
-                <h2>Resources</h2>
-              </div>
               <div className="form-container">
                 <ResourceForm
                   className="planner-form"
@@ -30,6 +27,9 @@ function Resources({ admin }) {
                 />
               </div>
               <div>
+                <div>
+                  <h2>Resources</h2>
+                </div>
                 <div className="card-container-a">
                   {resources?.map((resourceInfo) => (
                     <UpdateResourceCards
