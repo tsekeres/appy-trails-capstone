@@ -45,7 +45,14 @@ function Routes({
         <Route
           exact
           path="/trips/:firebaseKey"
-          component={SingleTrip}
+          user={user}
+          admin={admin}
+          component={() => (
+            <SingleTrip
+              user={user}
+              admin={admin}
+            />
+          )}
         />
         <PrivateRoute
           exact

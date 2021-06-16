@@ -11,8 +11,27 @@ body {
   height: 40px;
 }
 
+.nav-link {
+  color: black;
+  font-size: x-large;
+}
+
 li {
   list-style: none;
+}
+
+.user-info {
+  display: flex;
+  flex-flow: row;
+  .profilePic {
+  width: 2em;
+  margin-right: 1em;
+  }
+  .userInfo {
+    color: $favColor;
+    margin-right: 1em;
+    font-size: x-large;
+  }
 }
 
 // Trips view
@@ -72,6 +91,7 @@ li {
 .form-container {
   flex-direction: column;
   padding: 10px;
+  width: 400px;
 
   h2 {
     text-align: center;
@@ -129,6 +149,12 @@ li {
 // Resources View
 .resource-card {
   box-shadow: 5px 5px 5px 0px rgb(4, 48, 8);
+}
+
+.resource-button {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
 }
 
 // Single Trip View

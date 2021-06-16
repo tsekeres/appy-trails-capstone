@@ -40,6 +40,7 @@ const TripCards = ({ trip }) => {
             View Trip Details
           </Button>
         </div>
+        <CardText>Created By: {trip.creator}</CardText>
       </CardBody>
     </Card>
   );

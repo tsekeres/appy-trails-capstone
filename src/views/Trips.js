@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import TripCards from '../components/TripCards';
 import { getTrips } from '../helpers/data/TripsData';
 
-function Trips() {
+function Trips({ user, admin }) {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
@@ -20,11 +21,18 @@ function Trips() {
             key={tripInfo.firebaseKey}
             trip={tripInfo}
             setTrips={setTrips}
+            user={user}
+            admin={admin}
           />
         ))}
       </div>
     </>
   );
 }
+
+Trips.propTypes = {
+  user: PropTypes.any,
+  admin: PropTypes.any
+};
 
 export default Trips;
