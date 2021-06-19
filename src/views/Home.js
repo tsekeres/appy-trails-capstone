@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="homeView" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <Container fluid>
-        <div className="welcome">
+        <div className="memoji">
           <img className="memoji" src={lightmemoji}></img>
         </div>
         <div className="welcome">
