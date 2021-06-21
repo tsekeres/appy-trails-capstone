@@ -5,10 +5,13 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import {
-  addTrip, addUserTrip, updateTrip, updateUserTrip
+  // addTrip,
+  // addUserTrip,
+  updateTrip,
+  updateUserTrip,
 } from '../helpers/data/TripsData';
 
-const TripForm = ({
+const UpdateTripForm = ({
   user,
   admin,
   setTrips,
@@ -31,7 +34,7 @@ const TripForm = ({
 }) => {
   const [trip, setTrip] = useState({
     camping: camping || '',
-    creator: user.fullName || admin.fullName,
+    // creator: user.fullName || admin.fullName,
     description: description || '',
     distance: distance || '',
     difficulty: difficulty || '',
@@ -43,7 +46,7 @@ const TripForm = ({
     reservations: reservations || '',
     trailName: trailName || '',
     trailMap: trailMap || '',
-    userId: user.userId || admin.userId,
+    // userId: user.userId || admin.userId,
     firebaseKey: firebaseKey || null,
   });
   const history = useHistory();
@@ -57,121 +60,121 @@ const TripForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (trip.firebaseKey) {
-      if (admin) {
-        updateTrip(trip).then((response) => {
+    // if (trip.firebaseKey) {
+    if (admin) {
+      updateTrip(trip)
+        .then((response) => {
           setTrips(response);
           setUpdating(false);
-        }).then(() => {
+        })
+        .then(() => {
           history.push('/trip-planner');
         });
-      } else {
-        updateUserTrip(trip, user.userId)
-          .then((response) => {
-            setUserTrips(response);
-            setUpdating(false);
-          })
-          .then(() => {
-            history.push('/trip-planner');
-          });
-      }
     } else {
-      if (admin) {
-        addTrip(trip)
-          .then((response) => {
-            setTrips(response);
-            history.push('/trip-planner');
-          });
-      } else {
-        addUserTrip(trip, user.userId)
-          .then((response) => {
-            setUserTrips(response);
-            history.push('/trip-planner');
-          });
-      }
-
-      setTrip({
-        camping: '',
-        description: '',
-        distance: '',
-        difficulty: '',
-        fees: '',
-        image: '',
-        nearestHospital: '',
-        parkName: '',
-        parkWebLink: '',
-        reservations: '',
-        trailName: '',
-        trailMap: '',
-      });
+      updateUserTrip(trip, user.userId)
+        .then((response) => {
+          setUserTrips(response);
+          setUpdating(false);
+        })
+        .then(() => {
+          history.push('/trip-planner');
+        });
     }
+    // } else {
+    //   if (admin) {
+    //     addTrip(trip).then((response) => {
+    //       setTrips(response);
+    //       history.push('/trip-planner');
+    //     });
+    //   } else {
+    //     addUserTrip(trip, user.userId).then((response) => {
+    //       setUserTrips(response);
+    //       history.push('/trip-planner');
+    //     });
+    //   }
+
+    setTrip({
+      camping: '',
+      description: '',
+      distance: '',
+      difficulty: '',
+      fees: '',
+      image: '',
+      nearestHospital: '',
+      parkName: '',
+      parkWebLink: '',
+      reservations: '',
+      trailName: '',
+      trailMap: '',
+    });
+    // }
   };
 
   return (
-    <div className="trip-form">
-      <Form id="addtripForm" autoComplete="off" onSubmit={handleSubmit}>
+    <div className='trip-form'>
+      <Form id='addtripForm' autoComplete='off' onSubmit={handleSubmit}>
         <h2>{formTitle}</h2>
         <FormGroup>
-          <Label for="trailName">Trail Name:</Label>
+          <Label for='trailName'>Trail Name:</Label>
           <Input
-            name="trailName"
-            id="trailName"
+            name='trailName'
+            id='trailName'
             value={trip.trailName}
-            type="text"
-            placeholder="Enter a Trail Name"
+            type='text'
+            placeholder='Enter a Trail Name'
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="parkName">Park Name: </Label>
+          <Label for='parkName'>Park Name: </Label>
           <Input
-            name="parkName"
-            id="parkName"
+            name='parkName'
+            id='parkName'
             value={trip.parkName}
-            type="text"
-            placeholder="Enter a Park Name"
+            type='text'
+            placeholder='Enter a Park Name'
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="image">Image from Trail: </Label>
+          <Label for='image'>Image from Trail: </Label>
           <Input
-            name="image"
-            id="iamge"
+            name='image'
+            id='iamge'
             value={trip.image}
-            type="url"
-            placeholder="Enter an Image of the Trail"
+            type='url'
+            placeholder='Enter an Image of the Trail'
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="distance">Trail Distance: </Label>
+          <Label for='distance'>Trail Distance: </Label>
           <Input
-            name="distance"
-            id="distance"
+            name='distance'
+            id='distance'
             value={trip.distance}
-            type="text"
-            placeholder="Enter a Distance for the Trail"
+            type='text'
+            placeholder='Enter a Distance for the Trail'
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="description">Trip Description : </Label>
+          <Label for='description'>Trip Description : </Label>
           <Input
-            name="description"
-            id="description"
+            name='description'
+            id='description'
             value={trip.description}
-            type="text"
-            placeholder="Enter a Description"
+            type='text'
+            placeholder='Enter a Description'
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="difficulty">Trail Difficulty: </Label>
+          <Label for='difficulty'>Trail Difficulty: </Label>
           <Input
-            type="select"
-            name="difficulty"
-            id="difficulty"
+            type='select'
+            name='difficulty'
+            id='difficulty'
             value={trip.difficulty}
             onChange={handleInputChange}
           >
@@ -184,11 +187,11 @@ const TripForm = ({
           </Input>
         </FormGroup>
         <FormGroup>
-          <Label for="fees">Fees Required: </Label>
+          <Label for='fees'>Fees Required: </Label>
           <Input
-            type="select"
-            name="fees"
-            id="fees"
+            type='select'
+            name='fees'
+            id='fees'
             value={trip.fees}
             onChange={handleInputChange}
           >
@@ -199,11 +202,11 @@ const TripForm = ({
           </Input>
         </FormGroup>
         <FormGroup>
-          <Label for="camping">Camping Available: </Label>
+          <Label for='camping'>Camping Available: </Label>
           <Input
-            type="select"
-            name="camping"
-            id="camping"
+            type='select'
+            name='camping'
+            id='camping'
             value={trip.camping}
             onChange={handleInputChange}
           >
@@ -215,11 +218,11 @@ const TripForm = ({
           </Input>
         </FormGroup>
         <FormGroup>
-          <Label for="reservations">Reservations Required: </Label>
+          <Label for='reservations'>Reservations Required: </Label>
           <Input
-            type="select"
-            name="reservations"
-            id="reservations"
+            type='select'
+            name='reservations'
+            id='reservations'
             value={trip.reservations}
             onChange={handleInputChange}
           >
@@ -229,46 +232,46 @@ const TripForm = ({
           </Input>
         </FormGroup>
         <FormGroup>
-          <Label for="nearestHospital">Nearest Hospital: </Label>
+          <Label for='nearestHospital'>Nearest Hospital: </Label>
           <Input
-            name="nearestHospital"
-            id="nearestHospital"
+            name='nearestHospital'
+            id='nearestHospital'
             value={trip.nearestHospital}
-            type="text"
-            placeholder="Enter the Nearest Hospital"
+            type='text'
+            placeholder='Enter the Nearest Hospital'
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="parkWebLink">Park Link: </Label>
+          <Label for='parkWebLink'>Park Link: </Label>
           <Input
-            name="parkWebLink"
-            id="parkWebLink"
+            name='parkWebLink'
+            id='parkWebLink'
             value={trip.parkWebLink}
-            type="url"
-            placeholder="Enter the Park URL"
+            type='url'
+            placeholder='Enter the Park URL'
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="trailMap">Trail Map Link: </Label>
+          <Label for='trailMap'>Trail Map Link: </Label>
           <Input
-            name="trailMap"
-            id="trailMap"
+            name='trailMap'
+            id='trailMap'
             value={trip.trailMap}
-            type="url"
-            placeholder="Enter the Trail Map URL"
+            type='url'
+            placeholder='Enter the Trail Map URL'
             onChange={handleInputChange}
           />
         </FormGroup>
 
-        <Button type="submit">Submit</Button>
+        <Button type='submit'>Submit</Button>
       </Form>
     </div>
   );
 };
 
-TripForm.propTypes = {
+UpdateTripForm.propTypes = {
   admin: PropTypes.any,
   user: PropTypes.any,
   setTrips: PropTypes.func,
@@ -291,4 +294,4 @@ TripForm.propTypes = {
   setUpdating: PropTypes.func,
 };
 
-export default TripForm;
+export default UpdateTripForm;

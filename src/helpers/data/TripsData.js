@@ -79,6 +79,27 @@ const getSingleTrip = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const searchParkList = (parkName) => new Promise((resolve, reject) => {
+  getTrips().then((tripsArray) => {
+    const searchItems = tripsArray.filter((trip) => trip.parkName.includes(parkName));
+    resolve(searchItems);
+  }).catch((error) => reject(error));
+});
+
+const searchTrailList = (trailName) => new Promise((resolve, reject) => {
+  getTrips().then((tripsArray) => {
+    const searchItems = tripsArray.filter((trip) => trip.trailName.includes(trailName));
+    resolve(searchItems);
+  }).catch((error) => reject(error));
+});
+
+const searchDescriptionlist = (searchValue) => new Promise((resolve, reject) => {
+  getTrips().then((tripsArray) => {
+    const searchItems = tripsArray.filter((keyword) => keyword.description.toLowerCase().includes(searchValue.toLowerCase()));
+    resolve(searchItems);
+  }).catch((error) => reject(error));
+});
+
 export {
   getTrips,
   getUserTrips,
@@ -88,5 +109,8 @@ export {
   updateUserTrip,
   deleteTrip,
   deleteUserTrip,
-  getSingleTrip
+  getSingleTrip,
+  searchParkList,
+  searchTrailList,
+  searchDescriptionlist
 };
