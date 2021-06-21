@@ -79,16 +79,23 @@ const getSingleTrip = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const searchParkList = (firebaseKey) => new Promise((resolve, reject) => {
+const searchParkList = (parkName) => new Promise((resolve, reject) => {
   getTrips().then((tripsArray) => {
-    const searchItems = tripsArray.filter((parkName) => parkName.firebaseKey.includes(firebaseKey));
+    const searchItems = tripsArray.filter((trip) => trip.parkName.includes(parkName));
     resolve(searchItems);
   }).catch((error) => reject(error));
 });
 
-const searchTripList = (searchValue) => new Promise((resolve, reject) => {
+const searchTrailList = (trailName) => new Promise((resolve, reject) => {
   getTrips().then((tripsArray) => {
-    const searchItems = tripsArray.filter((keyword) => keyword.trailName.toLowerCase().includes(searchValue.toLowerCase()));
+    const searchItems = tripsArray.filter((trip) => trip.trailName.includes(trailName));
+    resolve(searchItems);
+  }).catch((error) => reject(error));
+});
+
+const searchDescriptionlist = (searchValue) => new Promise((resolve, reject) => {
+  getTrips().then((tripsArray) => {
+    const searchItems = tripsArray.filter((keyword) => keyword.description.toLowerCase().includes(searchValue.toLowerCase()));
     resolve(searchItems);
   }).catch((error) => reject(error));
 });
@@ -104,5 +111,6 @@ export {
   deleteUserTrip,
   getSingleTrip,
   searchParkList,
-  searchTripList
+  searchTrailList,
+  searchDescriptionlist
 };
