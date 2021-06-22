@@ -82,6 +82,7 @@ const UpdateResourceCards = ({
             title={resource.title}
             link={resource.link}
             description={resource.description}
+            setUpdating={setUpdating}
           />
         )}
       </CardBody>

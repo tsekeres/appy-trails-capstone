@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from 'reactstrap';
 import { deleteTrip, deleteUserTrip } from '../helpers/data/TripsData';
-import TripForm from './TripForm';
+import UpdateTripForm from './UpdateTripForm';
 
 const UpdateTripCards = ({
   user, setUser, admin, setAdmin, trip, setTrips, setUserTrips,
@@ -68,7 +68,7 @@ const UpdateTripCards = ({
           </Button>
         </div>
         {updating && (
-          <TripForm
+          <UpdateTripForm
             formTitle='Update Trip'
             user={user}
             setUser={setUser}
@@ -90,6 +90,7 @@ const UpdateTripCards = ({
             reservations={trip.reservations}
             trailName={trip.trailName}
             trailMap={trip.trailMap}
+            setUpdating={setUpdating}
           />
         )}
       </CardBody>

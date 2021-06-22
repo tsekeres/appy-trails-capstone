@@ -19,41 +19,52 @@ const NavBar = ({ user, admin }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   const authenticated = () => (
-    <Link className='nav-link' to='/trip-planner'>
+    <Link className='nav-link' style={{ color: '#d3910e' }} to='/trip-planner'>
       Trip Planner
     </Link>
   );
 
   return (
     <div>
-      <Navbar fixed="top" color="light" light expand="md">
-        <NavbarBrand href="/home">
-          <img className="navLogo" src={Logo}></img>
+      <Navbar fixed='top' color='dark' light expand='md'>
+        <NavbarBrand href='/home'>
+          <img className='navLogo' src={Logo}></img>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className='mr-auto' navbar>
             <NavItem>
-              <Link className="nav-link" to="/trips">
+              <Link
+                className='nav-link trip-color'
+                style={{ color: '#d3910e' }}
+                to='/trips'
+              >
                 Trips
               </Link>
             </NavItem>
             <NavItem>{(user || admin) && authenticated()}</NavItem>
             <NavItem>
-              <Link className="nav-link" to="/resources">
+              <Link
+                className='nav-link'
+                style={{ color: '#d3910e' }}
+                to='/resources'
+              >
                 Resources
               </Link>
             </NavItem>
           </Nav>
         </Collapse>
         {user !== null && (
-          <NavItem className="nav-id-info">
+          <NavItem className='nav-id-info'>
             {user || admin ? (
-              <div className="user-info">
+              <div className='user-info'>
                 <div>
-                  <img className="profilePic" src={user.profileImage || admin.profileImage}></img>
+                  <img
+                    className='profilePic'
+                    src={user.profileImage || admin.profileImage}
+                  ></img>
                 </div>
-                <div className="userInfo">
+                <div className='userInfo'>
                   <div>{user.fullName || admin.fullName}</div>
                 </div>
               </div>
@@ -65,11 +76,11 @@ const NavBar = ({ user, admin }) => {
         {(user || admin) !== null && (
           <NavItem>
             {user || admin ? (
-              <Button color="danger" onClick={signOutUser}>
+              <Button color='danger' onClick={signOutUser}>
                 Sign Out
               </Button>
             ) : (
-              <Button color="info" onClick={signInUser}>
+              <Button color='info' onClick={signInUser}>
                 Sign In
               </Button>
             )}
