@@ -24,7 +24,6 @@ function Trips({ user, admin }) {
         break;
       case 'keywordSearch':
         searchDescriptionlist(searchWord).then((response) => setTrips(response));
-        setSearchWord('');
         break;
       default:
         console.warn('error');
@@ -76,7 +75,7 @@ function Trips({ user, admin }) {
         <div>
           <Input
             type='text'
-            placeholder='Search Description by Keyword'
+            placeholder='Description Keyword Search'
             onChange={(e) => setSearchWord(e.target.value)}
           />
           <Button id='searchBtn' onClick={() => handleClick('keywordSearch')}>
