@@ -77,6 +77,12 @@ li {
   background-size: cover; 
 }
 
+.searchContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
 // Trips Planner View
 
 .planner-container {
