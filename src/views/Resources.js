@@ -27,8 +27,8 @@ function Resources({ admin }) {
                 />
               </div>
               <div>
-                <div>
-                  <h2>Resources</h2>
+                <div className="trips-header">
+                  <h1>Resources</h1>
                 </div>
                 <div className="card-container-a">
                   {resources?.map((resourceInfo) => (
@@ -44,8 +44,8 @@ function Resources({ admin }) {
             </div>
           ) : (
             <div className="planner-container">
-              <div>
-                <h2>Resources</h2>
+              <div className="trips-header">
+                <h1>Resources</h1>
               </div>
               <div className="card-container-a resources-view">
                 {resources?.map((resourceInfo) => (

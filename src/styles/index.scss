@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "variables";
 
@@ -12,6 +14,7 @@ body {
 }
 
 .nav-link {
+  font-family: 'Mate SC', serif;
   font-size: x-large;
 }
 
@@ -27,6 +30,7 @@ li {
   margin-right: 1em;
   }
   .userInfo {
+    font-family: 'Mate SC', serif;
     color: $favColor;
     margin-right: 1em;
     font-size: x-large;
@@ -35,6 +39,7 @@ li {
 
 // Trips view
 .card-container {
+  font-family: 'Mate SC', serif;
   display: flex;
   flex-flow: row wrap;
   margin-top: 30px;
@@ -65,6 +70,7 @@ li {
 }
 
 .trips-header {
+  font-family: 'Mate SC', serif;
   color: #d3910e;
   margin-top: 100px;
   text-align: center;
@@ -78,6 +84,8 @@ li {
 }
 
 .searchContainer {
+  font-family: 'Mate SC', serif;
+  margin-top: 30px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -86,7 +94,6 @@ li {
 // Trips Planner View
 
 .planner-container {
-  margin-top: 100px;
   width: 100%;
 
   h2 {
@@ -95,11 +102,14 @@ li {
 }
 
 .form-container {
+  margin-top: 100px;
+  font-family: 'Mate SC', serif;
+  color: #d3910e;
   flex-direction: column;
   padding: 10px;
   width: 50%;
 
-  h2 {
+  h1 {
     text-align: center;
   }
 }
@@ -111,7 +121,7 @@ li {
   justify-content: center;
 
   .card {
-    width: 220px;
+    width: 200px;
     height: auto;
     margin: 15px;
     display: flex;
@@ -120,6 +130,7 @@ li {
   }
 
   .card-body {
+    font-family: 'Mate SC', serif;
     flex: none;
   }
 }
@@ -136,7 +147,8 @@ li {
 
 // Home View
 .welcome {
-  color: white;
+  font-family: 'Mate SC', serif;
+  color: #d3910e;
   position: fixed;
   bottom: 50px;
 
