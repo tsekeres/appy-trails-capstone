@@ -113,7 +113,7 @@ const UpdateTripForm = ({
   return (
     <div className='trip-form'>
       <Form id='addtripForm' autoComplete='off' onSubmit={handleSubmit}>
-        <h2>{formTitle}</h2>
+        <h1>{formTitle}</h1>
         <FormGroup>
           <Label for='trailName'>Trail Name:</Label>
           <Input

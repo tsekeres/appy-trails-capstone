@@ -75,7 +75,7 @@ function Trips({ user, admin }) {
         <div>
           <Input
             type='text'
-            placeholder='Description Keyword Search'
+            placeholder='Keyword Search'
             onChange={(e) => setSearchWord(e.target.value)}
           />
           <Button id='searchBtn' onClick={() => handleClick('keywordSearch')}>

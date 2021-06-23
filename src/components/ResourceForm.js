@@ -60,7 +60,7 @@ const ResourceForm = ({
   return (
     <div className="resource-form">
       <Form id="addResourceForm" autoComplete="off" onSubmit={handleSubmit}>
-        <h2>{formTitle}</h2>
+        <h1>{formTitle}</h1>
         <FormGroup>
           <Label for="image">Image:</Label>
           <Input
