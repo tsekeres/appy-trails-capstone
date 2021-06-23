@@ -25,9 +25,9 @@ function TripPlanner({ user, admin }) {
           setUserTrips={setUserTrips}
         />
       </div>
-      <div>
-        <div>
-          <h2>Your Trips</h2>
+      <div className="card-planner-container">
+        <div className="trips-header">
+          <h1>Your Trips</h1>
         </div>
         {admin !== null && (
           <div>
