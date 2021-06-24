@@ -1,5 +1,8 @@
+
 ## Welcome to Appy Trails!
 Your one stop shop for backpacking trip planning and knowledge.
+
+![Screen shot Appy](https://user-images.githubusercontent.com/74842096/123332945-c49bd880-d506-11eb-9aab-6e85b64a42c5.png)
 
 ## Netlify Link
 https://appy-trails.netlify.app/
