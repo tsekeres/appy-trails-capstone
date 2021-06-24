@@ -76,11 +76,11 @@ const NavBar = ({ user, admin }) => {
         {(user || admin) !== null && (
           <NavItem>
             {user || admin ? (
-              <Button color='danger' onClick={signOutUser}>
+              <Button className="btn-out" onClick={signOutUser}>
                 Sign Out
               </Button>
             ) : (
-              <Button color='info' onClick={signInUser}>
+              <Button className="btn-in" onClick={signInUser}>
                 Sign In
               </Button>
             )}

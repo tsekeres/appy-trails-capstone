@@ -5,8 +5,6 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import {
-  // addTrip,
-  // addUserTrip,
   updateTrip,
   updateUserTrip,
 } from '../helpers/data/TripsData';
@@ -34,7 +32,6 @@ const UpdateTripForm = ({
 }) => {
   const [trip, setTrip] = useState({
     camping: camping || '',
-    // creator: user.fullName || admin.fullName,
     description: description || '',
     distance: distance || '',
     difficulty: difficulty || '',
@@ -46,7 +43,6 @@ const UpdateTripForm = ({
     reservations: reservations || '',
     trailName: trailName || '',
     trailMap: trailMap || '',
-    // userId: user.userId || admin.userId,
     firebaseKey: firebaseKey || null,
   });
   const history = useHistory();
@@ -60,7 +56,6 @@ const UpdateTripForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (trip.firebaseKey) {
     if (admin) {
       updateTrip(trip)
         .then((response) => {
@@ -80,18 +75,6 @@ const UpdateTripForm = ({
           history.push('/trip-planner');
         });
     }
-    // } else {
-    //   if (admin) {
-    //     addTrip(trip).then((response) => {
-    //       setTrips(response);
-    //       history.push('/trip-planner');
-    //     });
-    //   } else {
-    //     addUserTrip(trip, user.userId).then((response) => {
-    //       setUserTrips(response);
-    //       history.push('/trip-planner');
-    //     });
-    //   }
 
     setTrip({
       camping: '',
@@ -107,7 +90,6 @@ const UpdateTripForm = ({
       trailName: '',
       trailMap: '',
     });
-    // }
   };
 
   return (
