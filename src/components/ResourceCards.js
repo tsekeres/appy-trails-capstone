@@ -8,7 +8,6 @@ const ResourceCards = ({ resource }) => (
   <Card className='resource-card'>
     <CardImg top width='90%' src={resource.image} alt='Card image cap' />
     <CardBody>
-      <hr></hr>
       <CardTitle tag='h2'>{resource.title}</CardTitle>
       <hr></hr>
       <CardText>{resource.description}</CardText>

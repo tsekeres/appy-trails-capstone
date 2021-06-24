@@ -44,7 +44,6 @@ const UpdateResourceCards = ({
       <CardImg top width='100%' src={resource.image} alt='Card image cap' />
       <CardBody>
         <div>
-          <hr></hr>
           <CardTitle tag='h2'>{resource.title}</CardTitle>
           <hr></hr>
           <CardText>{resource.description}</CardText>

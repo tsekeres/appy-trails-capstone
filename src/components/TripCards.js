@@ -28,7 +28,6 @@ const TripCards = ({ trip }) => {
       <CardImg
         top
         width='100%'
-        className='trip-image'
         src={trip.image}
         alt='Card image cap'
       />

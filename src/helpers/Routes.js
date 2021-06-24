@@ -76,7 +76,6 @@ function Routes({
             />
           )}
         />
-        {/* <Route path="*" component={Home} /> */}
       </Switch>
     </div>
   );
