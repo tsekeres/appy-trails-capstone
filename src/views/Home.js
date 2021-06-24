@@ -17,7 +17,7 @@ export default function Home() {
             planning.
           </h1>
           <p className="lead">
-            As a guest you can browse through our planned trips or resources
+            As a guest you can browse through our established trips or use our resources
             page for ideas.
             <br></br>
             Sign in for the option to plan your own trips

@@ -38,24 +38,6 @@ const SingleTripCard = ({ trip }) => (
         <CardLink href={trip.parkWebLink}>Visit Park Website</CardLink>
       </CardBody>
     </Card>
-    {/* <div className="single-trip-image">
-      <img width="100%" src={trip.image} alt="Card image cap" />
-    </div>
-    <div className="single-trip-title-info">
-      <p>Trail Name: {trip.trailName}</p>
-      <p>Park Name: {trip.parkName}</p>
-      <p>Created By: {trip.creator}</p>
-    </div>
-    <div className="single-trip-title-info">
-      <p>Camping Available: {trip.camping}</p>
-      <p>Reservations Required: {trip.reservations}</p>
-      <p>Fees Required: {trip.fees}</p>
-    </div>
-    <div className="single-trip-title-info">
-      <p>Nearest Hospital: {trip.nearestHospital}</p>
-      <link href={trip.trailMap}>Trail Map</link>
-      <p>Fees Required: {trip.fees}</p>
-    </div> */}
   </>
 );
 

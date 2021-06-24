@@ -61,10 +61,10 @@ const UpdateTripCards = ({
             size='sm'
             onClick={() => handleClick('delete')}
           >
-            Delete Trip
+            Delete
           </Button>
           <Button color='info' size='sm' onClick={() => handleClick('update')}>
-            {updating ? 'Close Form' : 'Update Trip'}
+            {updating ? 'Close Form' : 'Update'}
           </Button>
         </div>
         {updating && (
