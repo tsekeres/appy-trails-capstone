@@ -41,6 +41,7 @@ Resource page has multiple links and site connections for trip planning informat
 Users and guests can search through or filter trip plans by category or key word (Park name, Trail name or key words in Trip descriptions).
 
 ## Loom 
+https://www.loom.com/share/a64cba867126477ebb7719a86c1cd1e9
 
 ## Helpful Links
 - Figma: https://www.figma.com/file/P8OlqG8D44QmOBT97xG8gc/Untitled?node-id=0%3A1
